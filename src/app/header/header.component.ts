@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Event, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +9,7 @@ export class HeaderComponent implements OnInit {
 
   token: any;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnDestroy(): void {
     
