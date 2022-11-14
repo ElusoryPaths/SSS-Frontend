@@ -1,1 +1,46 @@
-<p>register works!</p>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="well">
+                <h2>Register</h2>
+                <p>Enter your information below:
+            </div>
+
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div class="form-group">
+                    <label class="control-label" for="userName">First Name:</label>
+                    <input type="text" class="form-control" id="userName" name="userName" [(ngModel)]="user.firstName"
+                        autofocus>
+
+                    <label class="control-label" for="userName">Last Name:</label>
+                    <input type="text" class="form-control" id="userName" name="userName" [(ngModel)]="user.lastName"
+                        autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="userName">Username:</label>
+                    <input type="text" class="form-control" id="userName" name="userName" [(ngModel)]="user.username"
+                        autofocus>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="email">Email:</label>
+                    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email" autofocus>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" [(ngModel)]="user.password"
+                        name="password">
+                </div>
+
+                <div class="alert alert-danger" *ngIf="warning">
+                    {{warning}}
+                </div>
+                <br>
+                <button class="btn btn-primary pull-right" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br />

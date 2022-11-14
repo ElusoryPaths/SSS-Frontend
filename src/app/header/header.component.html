@@ -5,22 +5,31 @@
       <!-- Navbar Brand -->
       <div class="navbar-header d-flex align-items-center justify-content-between">
         <!-- Navbar Brand -->
-        <a routerLink="/" routerLinkActive="active" class="navbar-brand">Bootstrap Blog</a>
+        <a routerLink="/" routerLinkActive="active" class="navbar-brand">Seneca Supply Store</a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a routerLink="/home" routerLinkActive="active" class="nav-link ">Home</a>
+          </li>
+          <li class="nav-item"><a routerLink="/" routerLinkActive="active" class="nav-link ">Products</a>
+          </li>
+        </ul>
       </div>
       <!-- Navbar Menu -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a routerLink="/home" routerLinkActive="active" class="nav-link ">Home</a>
+      <div>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" *ngIf="!(token)"><a routerLink="/login" routerLinkActive="active"
+              class="nav-link ">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="!(token)"><a routerLink="/register" routerLinkActive="active"
+            class="nav-link ">Sign Up</a>
         </li>
-        <li class="nav-item"><a routerLink="/" routerLinkActive="active" class="nav-link ">Blog</a>
-        </li>
-        <li class="nav-item" *ngIf="token"><a routerLink="/" routerLinkActive="active" class="nav-link ">Admin</a>
-        </li>
-      </ul>
-      <div class="navbar-text" *ngIf="!(token)"><a routerLink="/login" routerLinkActive="active"
-          class="nav-link ">Login</a></div>
-      <div class="navbar-text" *ngIf="token"><a routerLink="/" routerLinkActive="active" class="nav-link ">Welcome
-          {{token.userName}}</a></div>
-      <div class="navbar-text"><button class=" btn"><i class="icon-search-1"></i></button></div>
+          <li class="nav-item" *ngIf="token"><a routerLink="/profile" routerLinkActive="active"
+              class="nav-link ">Profile</a>
+          </li>
+          <li class="nav-item" *ngIf="token"><a routerLink="/" routerLinkActive="active"
+              class="nav-link ">Signout</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 </header>

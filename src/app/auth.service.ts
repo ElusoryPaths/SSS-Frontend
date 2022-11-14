@@ -9,7 +9,7 @@ import User from './User';
   providedIn: 'root'
 })
 export class AuthService {
-  apiUrl = ""
+  apiUrl = "https://sss-backend.vercel.app"
   constructor(private http: HttpClient) { }
 
   public getToken(): string | null {
@@ -48,5 +48,9 @@ export class AuthService {
   login(user: User): Observable<any> {
     // Attempt to login
     return this.http.post<any>(`${this.apiUrl}/api/login`, user);
+  }
+
+  register(user: User): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/api/registration`, user);
   }
 }
