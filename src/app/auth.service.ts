@@ -9,7 +9,7 @@ import User from './User';
   providedIn: 'root'
 })
 export class AuthService {
-  apiUrl = "https://bti425-jacky-blog-api.herokuapp.com"
+  apiUrl = ""
   constructor(private http: HttpClient) { }
 
   public getToken(): string | null {
@@ -47,6 +47,6 @@ export class AuthService {
 
   login(user: User): Observable<any> {
     // Attempt to login
-    //return this.http.post<any>(`${this.apiUrl}/api/login`, user);
+    return this.http.post<any>(`${this.apiUrl}/api/login`, user);
   }
 }
