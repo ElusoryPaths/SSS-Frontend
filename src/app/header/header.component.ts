@@ -24,4 +24,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     }));
   }
+
+  onSignout(): void {
+    this.auth.clearSession();
+    this.router.navigate(['/']);
+    console.log('session cleared')
+  }
 }

@@ -25,7 +25,7 @@
           <li class="nav-item" *ngIf="token"><a routerLink="/profile" routerLinkActive="active"
               class="nav-link ">Profile</a>
           </li>
-          <li class="nav-item" *ngIf="token"><a routerLink="/" routerLinkActive="active"
+          <li class="nav-item" *ngIf="token"><a routerLink="/" routerLinkActive="active" (click)="onSignout()"
               class="nav-link ">Signout</a>
           </li>
         </ul>
