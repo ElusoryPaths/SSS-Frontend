@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import jwt_decode from "jwt-decode";
-
 import User from './User';
 
 @Injectable({
@@ -52,5 +51,9 @@ export class AuthService {
 
   register(user: User): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/api/registration`, user);
+  }
+
+  clearSession(): void{
+    localStorage.clear();
   }
 }

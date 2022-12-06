@@ -1,0 +1,14 @@
+<div class="Widget carousel">
+    <ngb-carousel *ngIf="products">
+        <ng-template ngbSlide *ngFor="let product of products;">
+            <div class="picsum-img-wrapper border border-dark">
+                <img class="carouselImg img-fluid mx-auto d-block" [src]="product.image" alt="Random slide" />
+            </div>
+            <div class="carousel-caption text-black">
+                <h3>{{product.title}}</h3>
+                <p>{{product.category}}</p>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+
+</div>
