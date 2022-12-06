@@ -1,11 +1,20 @@
 <div class="container">
-    <div class="col-md-4">
-        <div class="title">
-            Name: {{user.name}}
+    <h1 class="sectionHeading">Profile Information</h1>
+    <div class="profileHeader">
+        <div class="imageSection">
+            <img class="userImage" src="http://placebeard.it/480/480" alt="User Image" />
+            <div class="verticalLine"></div>
+        </div>
+        <div class="detailSection">
+            <h2>Name: <p class="detailText">{{user.name}}</p></h2>
+            <h2>Email: <p class="detailText">{{user.email}}</p></h2>
+            <h2>Username: <p class="detailText">{{user.username}}</p></h2>
+            <h2>Account Type: <p class="detailText"><i>unavailable</i></p></h2>
         </div>
     </div>
-    <div class="col-md-8">
-        <div>Email: {{user.email}}</div>
-        <div>Username: {{user.username}}</div>
+
+    <h1 class="sectionHeading">Your Liked Products</h1>
+    <div class="profileBody">
+        <h4 class="noLikes"><i>You Have Not Liked Any Products Yet...</i></h4>
     </div>
 </div>
