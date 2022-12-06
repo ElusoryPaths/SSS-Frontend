@@ -1,3 +1,7 @@
 .carouselImg {
     height: 500px;
 }
+
+.carouselText {
+    background-color: rgba(158, 158, 158, 0.5)
+}

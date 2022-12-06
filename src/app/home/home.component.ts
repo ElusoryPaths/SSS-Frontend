@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit , OnDestroy {
           for(let i=0;i<5;i++) {
             this.featured.push(this.products[i]); 
           }
-
         },
         (err) => {
           console.log("could not pull recent products...")
