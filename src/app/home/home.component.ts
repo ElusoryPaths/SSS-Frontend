@@ -8,9 +8,10 @@ import { ProductService } from '../product.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit , OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy {
   querySub: Subscription[] = [];
   featured: Array<Product> = [];
+  recent: Array<Product> = [];
   products: Array<Product> = [];
   error: string = "";
   constructor(private productServ: ProductService) { }
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit , OnDestroy {
   ngOnDestroy(): void {
     this.querySub.forEach((subscription) => subscription.unsubscribe());
   }
-  
+
   ngOnInit(): void {
     this.querySub.push(
       this.productServ.getRecentProducts().subscribe(
@@ -27,9 +28,11 @@ export class HomeComponent implements OnInit , OnDestroy {
           console.log("Successfully pulled recent products...")
           console.log(success);
 
-          for(let i=0;i<5;i++) {
-            this.featured.push(this.products[i]); 
+          for (let i = 0; i < 15; i++) {
+            if (i < 5) this.featured.push(this.products[i]);
+            else this.recent.push(this.products[i]);
           }
+
         },
         (err) => {
           console.log("could not pull recent products...")
@@ -37,7 +40,7 @@ export class HomeComponent implements OnInit , OnDestroy {
         }
       )
     )
-    
+
   }
 
 }

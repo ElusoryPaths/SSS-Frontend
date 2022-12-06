@@ -11,6 +11,6 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   public getRecentProducts(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/products/recent`)
+    return this.http.get<Array<Product>>(`${this.apiUrl}/products/recent`)
   } 
 }

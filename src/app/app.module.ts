@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RegisterComponent } from './register/register.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { PagingComponent } from './paging/paging.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     PageNotFoundComponent,
     RegisterComponent,
     ProductCardComponent,
-    CarouselComponent
+    CarouselComponent,
+    PagingComponent
   ],
   imports: [
     BrowserModule,
