@@ -1,3 +1,15 @@
-<div class="Widget product-card">
-    
+<div class="Widget product-card padding">
+    <div *ngIf="product" container>
+        <div class="row border border-dark ">
+            <div class="col-lg-4 mx-auto padding">
+                <a routerLink="/" routerLinkActive="active" class="nav-link ">
+                    <img class="productImg img-fluid mx-auto d-block" [src]="product.image" [alt]="product.title" />
+                </a>
+            </div>
+            <div class="col-lg-8 mx-auto padding cardBack">
+                <h3>{{product.title}}</h3>
+                <h5>${{product.price}}</h5>
+            </div>
+        </div>
+    </div>
 </div>

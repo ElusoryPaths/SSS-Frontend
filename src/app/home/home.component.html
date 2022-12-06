@@ -1,16 +1,22 @@
 <div>
     <section class="featured products">
+        
         <div class="container">
             <div class="row d-flex align-items-stretch">
                 <div class="col-lg-10 mx-auto"> 
                     <h2>Featured Items</h2>
+                    <app-carousel [products]="featured"></app-carousel>
                 </div>
             </div>
         </div>
+
+    </section>
+    <section class="recent products">
         <div class="container">
             <div class="row d-flex align-items-stretch">
-                <div class="col-lg-10 mx-auto"> 
-                    <app-carousel [products]="featured"></app-carousel>
+                <div class="col-lg-10 mx-auto "> 
+                    <h2>Recent products</h2>
+                    <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
                 </div>
             </div>
         </div>

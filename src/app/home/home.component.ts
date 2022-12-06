@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit , OnDestroy {
   featured: Array<Product> = [];
   products: Array<Product> = [];
   error: string = "";
-  constructor(private product: ProductService) { }
+  constructor(private productServ: ProductService) { }
 
   ngOnDestroy(): void {
     this.querySub.forEach((subscription) => subscription.unsubscribe());
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit , OnDestroy {
   
   ngOnInit(): void {
     this.querySub.push(
-      this.product.getRecentProducts().subscribe(
+      this.productServ.getRecentProducts().subscribe(
         (success) => {
           this.products = success;
           console.log("Successfully pulled recent products...")
