@@ -1,19 +1,32 @@
+<section class="product" *ngIf="product">
+    <div class="container ">
+        <div class="row padding">
+            <div class="col-lg-3 mx-auto">
+                <img class="image" [src]="product.image">
+            </div>
+            <div class="col-lg-6 mx-auto">
+                <h2>{{product.title}}</h2>
+                <p>rating: {{product.rating.rate}} reviews: {{product.rating.count}}</p>
+                <p>${{product.price}}</p>
 
-<section class="product">
-    <div class="container">
-        <div class="row d-flex align-items-stretch">
-            <div class="col-lg-10 mx-auto"> 
-                <h2>Item</h2>
-                
+                <button class="btn btn-warning" style="width:100%">Add to Cart</button>
             </div>
         </div>
+
+        <div class="row padding">
+            <div class="col-lg-10 mx-auto">
+                <h2>Description</h2>
+                <section>{{product.description}}</section>
+            </div>
+            
+        </div>
+
     </div>
 
     <div class="container">
-        <div class="row d-flex align-items-stretch">
-            <div class="col-lg-10 mx-auto"> 
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
                 <h2>Reviews</h2>
-                
             </div>
         </div>
     </div>
