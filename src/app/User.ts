@@ -1,3 +1,5 @@
+import Address from "./Address";
+
 export default class User{
     _id: string | undefined;
     username: string | undefined;
@@ -6,4 +8,6 @@ export default class User{
     lastName: string | undefined;
     email: string | undefined;
     name: string | undefined;
+    phoneNumber: string | undefined;
+    
 }

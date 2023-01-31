@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import User from '../User';
 import { AuthService } from '../auth.service';
+import Buyer from '../Buyer';
+import Address from '../Address';
 
 @Component({
   selector: 'app-register',
@@ -11,11 +13,15 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit, OnDestroy {
-  public user: User = new User();
-  public warning: string = "";
+  user: Buyer = new Buyer();
+  warning: string = "";
+  buyer: boolean = true;
   querySub: Subscription[] = [];
-
-  constructor(private auth: AuthService, private router: Router) { }
+  addressFieldNames = ["Address Line 1", "Address Line 2", "City", "Province", "Postal Code", "Country"];
+  addressFields = ["addressLine1", "addressLine2", "city", "province", "postalCode", "country"];
+  constructor(private auth: AuthService, private router: Router) { 
+    this.user.address = new Address();
+  }
 
   ngOnDestroy(): void {
     this.querySub.forEach((subscription) => subscription.unsubscribe());
