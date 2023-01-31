@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { PagingComponent } from './paging/paging.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PagingComponent } from './paging/paging.component';
     RegisterComponent,
     ProductCardComponent,
     CarouselComponent,
-    PagingComponent
+    PagingComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,

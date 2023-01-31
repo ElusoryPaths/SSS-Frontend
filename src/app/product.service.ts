@@ -13,4 +13,8 @@ export class ProductService {
   public getRecentProducts(): Observable<any> {
     return this.http.get<Array<Product>>(`${this.apiUrl}/products/recent`)
   } 
+
+  public getProductById(id: string): Observable<any> {
+    return this.http.get<Product>(`${this.apiUrl}/product/${id}`)
+  }
 }

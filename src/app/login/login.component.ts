@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(f: NgForm): void {
-
     this.querySub.push(this.auth.login(this.user).subscribe(
       (success) => {
         this.auth.setToken(success.token);

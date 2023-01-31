@@ -4,6 +4,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: 'full' },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
+  { path: "product/:id", component: ProductPageComponent },
   { path: "profile", component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: "**", component: PageNotFoundComponent }
 ];
