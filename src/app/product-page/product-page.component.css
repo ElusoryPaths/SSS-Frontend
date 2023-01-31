@@ -1,0 +1,13 @@
+.image {
+    
+    max-width: 100%;
+    max-height: 50%;
+}
+
+.buyButton {
+    color: #0046be;
+}
+
+.addCart {
+    background-color:#ffce00;
+}

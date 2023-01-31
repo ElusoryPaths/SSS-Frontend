@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router'
+import { ActivatedRoute, ParamMap, Router } from '@angular/router'
 import { Subscription } from 'rxjs';
 import Product from '../Product';
 import { ProductService } from '../product.service';
@@ -15,7 +15,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   id: string | null = "";
   product!: Product;
 
-  constructor(private route: ActivatedRoute, private productServ: ProductService) { }
+  constructor(private route: ActivatedRoute, private productServ: ProductService, private router: Router) { }
 
   ngOnDestroy(): void {
     this.querySub.forEach((subscription) => subscription.unsubscribe());
@@ -29,8 +29,19 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     )
     if (this.id) {
       this.querySub.push(
-        this.productServ.getProductById(this.id).subscribe((prod: Product) => {
-          this.product = prod;
+        this.productServ.getProductById(this.id).subscribe({
+          next: (success) => {
+            console.log(success)
+            if (success.message) {
+              this.router.navigate(['**'], { skipLocationChange: true })
+            } else {
+              this.product = success;
+            }
+            
+          },
+          error: (error) => { 
+            console.error(error) 
+          }
         })
       )
     }

@@ -1,5 +1,5 @@
-<div>
-    <section class="featured products">
+<div *ngIf="products.length != 0">
+    <section class="featured products" >
         
         <div class="container">
             <div class="row d-flex align-items-stretch">
@@ -14,7 +14,7 @@
     <section class="recent products">
         <div class="container">
             <div class="row d-flex align-items-stretch">
-                <div class="col-lg-10 mx-auto "> 
+                <div class="col-lg-10 mx-auto"> 
                     <h2>Recent products</h2>
                     <app-product-card *ngFor="let product of recent" [product]="product"></app-product-card>
                     <app-paging></app-paging>

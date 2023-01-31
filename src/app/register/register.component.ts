@@ -13,12 +13,14 @@ import Address from '../Address';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit, OnDestroy {
-  user: Buyer = new Buyer();
+  user: User = new User();
   warning: string = "";
-  buyer: boolean = true;
+  type: string = "";
   querySub: Subscription[] = [];
+  
   addressFieldNames = ["Address Line 1", "Address Line 2", "City", "Province", "Postal Code", "Country"];
   addressFields = ["addressLine1", "addressLine2", "city", "province", "postalCode", "country"];
+
   constructor(private auth: AuthService, private router: Router) { 
     this.user.address = new Address();
   }
@@ -30,11 +32,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
+  onTypeChange(event: any) : void {
+    this.type = event.target.value
+  }
+
   onSubmit(f: NgForm): void {
-    this.user.name = this.user.firstName + " " + this.user.lastName
     this.querySub.push(this.auth.register(this.user).subscribe(
       (success) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
         console.log(success)
       },
       (err) => {

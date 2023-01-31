@@ -1,13 +1,16 @@
 <div class="Widget carousel">
     <ngb-carousel *ngIf="products">
-        <ng-template ngbSlide *ngFor="let product of products;">
-            <div class="picsum-img-wrapper border border-dark padding">
-                <img class="carouselImg img-fluid mx-auto d-block" [src]="product.image" [alt]="product.title" />
-            </div>
-            <div class="carouselText carousel-caption text-black">
-                <h3>{{product.title}}</h3>
-                <p>{{product.category}}</p>
-            </div>
+        <ng-template ngbSlide *ngFor="let product of products;" >
+            <a [routerLink]="['/product', product.id]">
+                <div class="picsum-img-wrapper border border-dark padding">
+                    <img class="carouselImg img-fluid mx-auto d-block" [src]="product.image" [alt]="product.title" />
+                </div>
+                <div class="carouselText carousel-caption text-black">
+                    <h3>{{product.title}}</h3>
+                    <p>{{product.category}}</p>
+                </div>
+            </a>
+            
         </ng-template>
     </ngb-carousel>
 

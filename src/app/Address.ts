@@ -1,5 +1,5 @@
 export default class Address {
-    nickname!: string;
+    nickname: string = "home";
     addressLine1!: string;
     addressLine2!: string;
     city!: string;
