@@ -18,6 +18,9 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { PagingComponent } from './paging/paging.component';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { ProductsComponent } from './products/products.component';
+import { CategoryComponent } from './category/category.component';
+import { CategoryCardComponent } from './category-card/category-card.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { ProductPageComponent } from './product-page/product-page.component';
     ProductCardComponent,
     CarouselComponent,
     PagingComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    ProductsComponent,
+    CategoryComponent,
+    CategoryCardComponent
   ],
   imports: [
     BrowserModule,
