@@ -1,41 +1,9 @@
-<!-- <div *ngIf="product">
-
-    
-    <section class="gallery">
-        <div class="container">
-            <div>
-                <div class="col-lg-4 mb-3">
-                    <div class="card">
-                        <div class="img-container">
-                            <a routerLink="/" routerLinkActive="active">
-                                <img class="images" [src]="product.image" [alt]="product.title" height="150" width="150">
-                            </a>
-                            
-                            <div class="overlay">
-                                <button class="btn btn-outline-secondary btn-sm"><i class="fas fa-cart plus mr-5"></i>Add to Cart</button>
-                                
-                            </div>
-                        </div>
-    
-                        <div class="card-body">
-                            <h5 class="card-title">{{product.title}}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">${{product.price}}</h6>
-                            
-                        </div>
-    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div> -->
-
-
 
 <div *ngIf="product" class="card">
     <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
-      <img [src]="product.image" class="img-fluid" height="150" width="150"/>
-      <a routerLink="/" routerLinkActive="active">
+      
+      <a [routerLink]="['/product',product.id]">
+        <img [src]="product.image" class="img-fluid" height="150" width="150"/>
         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
       </a>
     </div>
