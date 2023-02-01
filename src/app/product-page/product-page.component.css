@@ -1,0 +1,14 @@
+.image {
+    height: 100%;
+    width: 400px;
+
+    min-height: 300px;
+}
+
+.buyButton {
+    color: #0046be;
+}
+
+.addCart {
+    background-color:#ffce00;
+}
