@@ -33,16 +33,16 @@
 
 
 <div *ngIf="product" class="card">
-    <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
-      <img [src]="product.image" class="img-fluid" height="150" width="150"/>
-      <a routerLink="/" routerLinkActive="active">
-        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-      </a>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{product.title}}</h5>
-      <p class="card-text">{{product.description}}</p>
-      <p>${{product.price}}</p>
-      <a routerLink="/" class="btn btn-primary">Add to Cart</a>
-    </div>
+    <a [routerLink]="['/product', product.id]">
+        <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
+            <img [src]="product.image" class="img-fluid" height="150" width="150"/>
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{product.title}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <p>${{product.price}}</p>
+            <a routerLink="/" class="btn btn-primary">Add to Cart</a>
+          </div>
+    </a> 
 </div>
