@@ -1,31 +1,56 @@
 <div *ngIf="products.length != 0">
-    <section class="featured products" >
+    <section class="Banners" >
         
-        <div class="container">
-            <div class="row d-flex align-items-stretch">
-                <div class="col-lg-10 mx-auto"> 
-                    <h2>Featured Items</h2>
-                    <app-carousel [products]="featured"></app-carousel>
-                </div>
-            </div>
-        </div>
+        <app-carousel (message)="recieveData($event)"></app-carousel>
 
     </section>
+
     <section class="recent products">
-        <div class="container">
-            <div class="row d-flex align-items-stretch">
-                <div class="col-lg-10 mx-auto"> 
-                    <h2>Recent products</h2>
-                    <app-product-card *ngFor="let product of recent" [product]="product"></app-product-card>
-                    <app-paging></app-paging>
+        <div *ngIf="this.showProduct; else elseBlock">
+
+            <div class="Trending">
+                <h2 id="recent-product-title">Latest Products</h2>
+                <div class="card" *ngFor="let prod of recent | paginate:{itemsPerPage: this.itemsPerPage,currentPage:p,totalItems:this.totalProduct}">
+                    <app-product-card [product]="prod"></app-product-card>
                 </div>
             </div>
+
+
+            
         </div>
+
+        <div>
+            <ng-template #elseBlock>
+                <div class="Featured">
+                    <h2 id="recent-product-title">Featured Products</h2>
+                    <div class="card" *ngFor="let prod of products | paginate:{itemsPerPage: this.itemsPerPage,currentPage:p,totalItems:this.products.length}">
+                        <app-product-card [product]="prod"></app-product-card>
+                    </div>
+                </div>
+            </ng-template>
+
+
+
+
+
+            <div class="pagination-control">
+                <style>
+                    .pagination-control ::ng-deep .ngx-pagination .current {
+                        background: #FCE700;
+                    }
+                </style>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+
+        
+
     </section>
 
-    <section class="category cards">
-        <div class="d-flex align-items-center h-100 justify-content-center">
-            <app-category-card></app-category-card>
+    <section class="category-cards">
+        <div class="container">
+            <h2>Our Product Category</h2>
+            <app-category></app-category>
         </div>
     </section>
 

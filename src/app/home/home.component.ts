@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import Product from '../Product';
 import { ProductService } from '../product.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,10 +15,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   recent: Array<Product> = [];
   products: Array<Product> = [];
   error: string = "";
+  p:number = 1;
+  totalProduct:number = this.recent.length;
+  itemsPerPage: number = 5;
+  showProduct: boolean = false;
   constructor(private productServ: ProductService) { }
 
   ngOnDestroy(): void {
     this.querySub.forEach((subscription) => subscription.unsubscribe());
+  }
+
+  recieveData(data:any)
+  {
+    this.showProduct = data;
+    console.log(data);
   }
 
   ngOnInit(): void {
@@ -32,6 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             if (i < 5) this.featured.push(this.products[i]);
             else this.recent.push(this.products[i]);
           }
+          
 
         },
         (err) => {

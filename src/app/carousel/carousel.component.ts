@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { NgbCarouselConfig, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import Product from '../Product';
 
@@ -10,6 +10,7 @@ import Product from '../Product';
 })
 export class CarouselComponent implements OnInit {
   @Input() products!: Array<Product>;
+  @Output() message:EventEmitter<any> = new EventEmitter();
 
   
   constructor(config: NgbCarouselConfig) { 
@@ -22,6 +23,15 @@ export class CarouselComponent implements OnInit {
 
   ngOnInit(): void {
     
+  }
+
+  sendBtn1Data() :void
+  {
+    this.message.emit(false);
+  }
+  sendBtn2Data() :void
+  {
+    this.message.emit(true);
   }
 
 }

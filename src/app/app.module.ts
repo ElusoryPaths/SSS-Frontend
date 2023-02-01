@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -21,6 +22,8 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductsComponent } from './products/products.component';
 import { CategoryComponent } from './category/category.component';
 import { CategoryCardComponent } from './category-card/category-card.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { CategoryCardComponent } from './category-card/category-card.component';
     ProductPageComponent,
     ProductsComponent,
     CategoryComponent,
-    CategoryCardComponent
+    CategoryCardComponent,
+    
+
+
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,8 @@ import { CategoryCardComponent } from './category-card/category-card.component';
     FormsModule,
     NgbModule,
     HttpClientModule,
-    NgbCarouselModule
+    NgbCarouselModule,
+    NgxPaginationModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

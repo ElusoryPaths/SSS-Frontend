@@ -1,17 +1,46 @@
-<div class="Widget carousel">
-    <ngb-carousel *ngIf="products">
-        <ng-template ngbSlide *ngFor="let product of products;" >
-            <a [routerLink]="['/product', product.id]">
-                <div class="picsum-img-wrapper border border-dark padding">
-                    <img class="carouselImg img-fluid mx-auto d-block" [src]="product.image" [alt]="product.title" />
+<section class="Banners">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 p-0">
+                <div class="categories_large_item">
+                    <img src="../../assets/banner3.jpg" alt="" class="img-fluid">
+                    <div class="categories-lg-text">
+                        <h1>Women's Fasion</h1>
+                        <p>Up to 60% OFF</p>
+                        <a routerLink="/">Buy Now</a>
+                    </div>
                 </div>
-                <div class="carouselText carousel-caption text-black">
-                    <h3>{{product.title}}</h3>
-                    <p>{{product.category}}</p>
-                </div>
-            </a>
-            
-        </ng-template>
-    </ngb-carousel>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="top-left-text">
+                            <h3>New Arrivals Every Week</h3>
+                            <h2>Sign up Now<br> Claim 20% on <br>First Order</h2>
+                        </div>
 
-</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="categories_item">
+                            <img src="../../assets/banner2.jpg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="categories_item">
+                            <img src="../../assets/banner4.jpg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="buttons">
+                            <button class="btn btn-outline-info"(click)="sendBtn1Data()" >Featured Products</button>
+                            <button class="btn btn-outline-warning" (click)="sendBtn2Data()" >Latest Products</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+
+*{
+  background-color: #FFF9F9;
+}
+.card {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    
+}
+
+.Banners{
+  margin-top:1%;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+#pagination{
+  background-color: black;
+}
+
+#recent-product-title
+{
+  text-align: center;
+  margin-top: 10%;
+  color:#39B5E0;
+}
+
+.pagination-control
+{
+  margin-left: 20%;
+  margin-right: 20%;
+  padding-left: 17%;
+  font-size: larger;
+  font-weight: 500;
+  
+}
+
+
+.category-cards{
+  margin-top: 10%;
+  margin-bottom: 10%;
+  
+}
+
+.category-cards h2{
+  text-align: center;
+  padding-bottom: 10%;
+}
+
+
+
+
+
+
+  
