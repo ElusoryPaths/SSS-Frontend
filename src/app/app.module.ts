@@ -23,6 +23,7 @@ import { ProductsComponent } from './products/products.component';
 import { CategoryComponent } from './category/category.component';
 import { CategoryCardComponent } from './category-card/category-card.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ProductReviewComponent } from './product-review/product-review.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ProductsComponent,
     CategoryComponent,
     CategoryCardComponent,
+    ProductReviewComponent,
     
 
 
