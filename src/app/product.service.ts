@@ -8,7 +8,8 @@ import Review from './Review';
   providedIn: 'root'
 })
 export class ProductService {
-  apiUrl = "https://sss-backend.vercel.app"
+  apiUrl = "https://sss-backend.vercel.app";
+
   constructor(private http: HttpClient) { }
 
   public getRecentProducts(): Observable<any> {
