@@ -22,8 +22,8 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductsComponent } from './products/products.component';
 import { CategoryComponent } from './category/category.component';
 import { CategoryCardComponent } from './category-card/category-card.component';
-import {NgxPaginationModule} from 'ngx-pagination';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ProductReviewComponent } from './product-review/product-review.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +42,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ProductsComponent,
     CategoryComponent,
     CategoryCardComponent,
-    
-
+    ProductReviewComponent,
 
   ],
   imports: [
@@ -54,12 +53,17 @@ import {NgxPaginationModule} from 'ngx-pagination';
     HttpClientModule,
     NgbCarouselModule,
     NgxPaginationModule,
+    
+
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: InterceptTokenService,
-    multi: true
-  },NgbCarouselConfig],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptTokenService,
+      multi: true
+    },
+    NgbCarouselConfig,
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

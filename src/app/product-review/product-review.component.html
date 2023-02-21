@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <h2>Reviews</h2>
+
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add a Review</h5>
+                    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                        <ngb-rating [(rate)]="newReview.rating" [max]="5"></ngb-rating>
+
+                        <div class="form-group">
+                            <label class="control-label" for="body">Review: </label>
+                            <input type="textarea" class="form-control" id="body" name="body"
+                                [(ngModel)]="newReview.body" autofocus>
+                        </div>
+                        <p>{{warning}}</p>
+                        <button class="btn btn-primary pull-right" type="submit">Add Review</button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card" *ngFor="let review of reviews">
+                    <div class="card-body">
+                        <ngb-rating [(rate)]="review.rating" [max]="5" [readonly]="true"></ngb-rating>
+                        <p>{{review.user}} on {{review.date}}</p>
+                        <p>{{review.body}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

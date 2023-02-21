@@ -12,7 +12,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 
   querySub: Subscription[] = [];
 
-  id: string | null = "";
+  id: string = "";
   product!: Product;
 
   constructor(private route: ActivatedRoute, private productServ: ProductService, private router: Router) { }
@@ -24,14 +24,13 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.querySub.push(
       this.route.paramMap.subscribe((params: ParamMap) => {
-        this.id = params.get('id')
+        this.id = params.get('id') || ""
       })
     )
     if (this.id) {
       this.querySub.push(
         this.productServ.getProductById(this.id).subscribe({
           next: (success) => {
-            console.log(success)
             if (success.message) {
               this.router.navigate(['**'], { skipLocationChange: true })
             } else {
