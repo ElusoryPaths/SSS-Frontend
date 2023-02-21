@@ -20,11 +20,11 @@
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-secondary" type="submit">Search</button>
-        </form>
+
+        
         <a routerLink="/profile" *ngIf="token" routerLinkActive="active" class="nav-link "></a>
+
+        
         
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" *ngIf="!(token)"><a routerLink="/login" routerLinkActive="active"

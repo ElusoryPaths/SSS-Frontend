@@ -25,6 +25,7 @@ import { CategoryCardComponent } from './category-card/category-card.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductReviewComponent } from './product-review/product-review.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { ProductReviewComponent } from './product-review/product-review.componen
     CategoryComponent,
     CategoryCardComponent,
     ProductReviewComponent,
+    
 
   ],
   imports: [
