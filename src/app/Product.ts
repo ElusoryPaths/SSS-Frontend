@@ -1,3 +1,5 @@
+import Review from "./Review";
+
 export default interface Product {
     id: string;
     title: string;
@@ -9,4 +11,5 @@ export default interface Product {
         rate: number;
         count: number;
     }
+    reviews: Array<Review>
 }
