@@ -8,6 +8,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductsComponent } from './products/products.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent },
   { path: "product/:id", component: ProductPageComponent },
   { path: "profile", component: ProfileComponent, canActivate: [AuthGuardService] },
+  {path:"search",component: SearchPageComponent},
   { path: "**", component: PageNotFoundComponent }
 ];
 

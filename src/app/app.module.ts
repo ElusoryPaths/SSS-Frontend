@@ -24,6 +24,8 @@ import { CategoryComponent } from './category/category.component';
 import { CategoryCardComponent } from './category-card/category-card.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductReviewComponent } from './product-review/product-review.component';
+import { SearchButtonComponent } from './search-button/search-button.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { ProductReviewComponent } from './product-review/product-review.componen
     CategoryComponent,
     CategoryCardComponent,
     ProductReviewComponent,
+    SearchButtonComponent,
+    SearchPageComponent,
     
 
   ],

@@ -1,0 +1,20 @@
+<div class="container">
+
+    <div class="Search-Box">
+        <div class="row d-flex justify-content-center align-items-center" >
+            <div class="col-md-6">
+                <div class="form">
+                    <i class="fa fa-search" (click)="onClickSearchIcon()"></i>
+                    <input type="text" class="form-control form-input" [(ngModel)]="searchValue" name="SearchValue" placeholder="search products">
+                    <i class="fa-sharp fa-solid fa-circle-xmark" (click)="onClickClearIcon()" ></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="showResult" class="search-result">
+        <div class="card" *ngFor="let prod of foundProducts">
+            <app-product-card [product]="prod"></app-product-card>
+        </div>
+    </div>
+
+</div>

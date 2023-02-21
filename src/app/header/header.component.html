@@ -24,7 +24,7 @@
         
         <a routerLink="/profile" *ngIf="token" routerLinkActive="active" class="nav-link "></a>
 
-        
+        <app-search-button></app-search-button>
         
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" *ngIf="!(token)"><a routerLink="/login" routerLinkActive="active"

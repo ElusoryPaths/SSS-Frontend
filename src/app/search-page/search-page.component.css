@@ -1,0 +1,53 @@
+.card {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    
+}
+
+.Search-Box{
+    margin-top: 10%;
+    
+}
+
+.form{
+    position: relative;
+}
+
+.form .fa-search{
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    color: black;
+
+}
+
+.form .fa-search:hover{
+    cursor: pointer;
+}
+
+.form .fa-sharp
+{
+    position: absolute;
+    margin-left: 95%;
+    bottom: 20px;
+    
+
+}
+
+.form .fa-sharp:hover{
+    cursor: pointer;
+}
+
+.form-input{
+    height: 55px;
+    text-indent: 33px;
+    border-radius: 10px;
+}
+
+.form-input:focus{
+    box-shadow: none;
+    border: none;
+}
+
