@@ -1,13 +1,4 @@
 .navbar {
-    background-color: #E5E0FF;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    
-}
-
-*{
-    color: black;
-    font-weight:700;
-    
-    
+    background-color: #303030;
+    height: 65px;
 }
