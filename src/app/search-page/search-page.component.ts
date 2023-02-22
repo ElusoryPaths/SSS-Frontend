@@ -39,6 +39,8 @@ export class SearchPageComponent implements OnInit {
         console.log("The value from search button in search page: " + urlTree.queryParams['query']);
         this.searchValue = urlTree.queryParams['query'];
         this.foundProducts = [];
+        this.showNotFound = false;
+        this.showResult = false;
         this.onClickSearchIcon();
 
       }
