@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, Event } from '@angular/router';
 import Product from '../Product';
 import { ProductService } from '../product.service';
+import { HttpParams } from '@angular/common/http';
+import { query } from '@angular/animations';
 
 
 
@@ -13,12 +15,14 @@ import { ProductService } from '../product.service';
 export class SearchPageComponent implements OnInit {
 
   prodTitle : string = "";
+  currentUrl : string = "";
   searchValue : string = "";
   allProducts : Array<Product> = [];
   foundProducts : Array<Product> = [];
   showResult !: boolean;
+  showNotFound !: boolean;
 
-  constructor(private route : ActivatedRoute, private productService : ProductService) { }
+  constructor(private route : ActivatedRoute, private productService : ProductService, private router : Router) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params=>{
@@ -26,6 +30,30 @@ export class SearchPageComponent implements OnInit {
       console.log(this.prodTitle);
       console.log("first function");
     });
+
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        
+        this.currentUrl = event.url;
+        const urlTree = this.router.parseUrl(this.currentUrl);
+        console.log("The value from search button in search page: " + urlTree.queryParams['query']);
+        this.searchValue = urlTree.queryParams['query'];
+        this.foundProducts = [];
+        this.showNotFound = false;
+        this.showResult = false;
+        this.onClickSearchIcon();
+
+      }
+    });
+    
+
+
+
+
+
+
+
+    
 
     this.productService.getRecentProducts().subscribe(
       (products) =>
@@ -68,6 +96,10 @@ export class SearchPageComponent implements OnInit {
         this.foundProducts.push(singleProd);
       }
     }
+    if(this.foundProducts.length == 0)
+    {
+      this.showNotFound = true;
+    }
   }
 
   onClickSearchIcon(): void
@@ -80,10 +112,12 @@ export class SearchPageComponent implements OnInit {
 
   onClickClearIcon() : void
   {
+    this.showNotFound = false;
     this.showResult = false;
     this.foundProducts = [];
     this.prodTitle = "";
     this.searchValue = "";
+    
   }
 
 

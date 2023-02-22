@@ -1,13 +1,36 @@
 <div class="container">
 
     <div class="Search-Box">
-        <div class="row d-flex justify-content-center align-items-center" >
+        <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-6">
                 <div class="form">
                     <i class="fa fa-search" (click)="onClickSearchIcon()"></i>
-                    <input type="text" class="form-control form-input" [(ngModel)]="searchValue" name="SearchValue" placeholder="search products">
-                    <i class="fa-sharp fa-solid fa-circle-xmark" (click)="onClickClearIcon()" ></i>
+                    <input type="text" class="form-control form-input" [(ngModel)]="searchValue" name="SearchValue"
+                        placeholder="search products" (keyup)="onClickSearchIcon()">
+                    <i class="fa-sharp fa-solid fa-circle-xmark" (click)="onClickClearIcon()"></i>
                 </div>
+
+                <div class="categories ms-3 mt-5 mb-5">
+                    <button type="button" class="btn btn-outline-secondary me-2" placement="top"
+                        ngbPopover="Feature Coming Soon. Development in progress..." popoverTitle="Mens Collection">
+                        Mens Collection
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary me-2" placement="top"
+                        ngbPopover="Feature Coming Soon. Development in progress..." popoverTitle="Womens Collection">
+                        Womens Collection
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary me-2" placement="top"
+                        ngbPopover="Feature Coming Soon. Development in progress..." popoverTitle="Kids Collection">
+                        Kids Collection
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary me-2" placement="top"
+                        ngbPopover="Feature Coming Soon. Development in progress..." popoverTitle="Watch Collection">
+                        Watch Collection
+                    </button>
+                </div>
+
+                <h1 class="error" *ngIf="showNotFound" >Sorry no products found</h1>
+
             </div>
         </div>
     </div>
@@ -16,5 +39,7 @@
             <app-product-card [product]="prod"></app-product-card>
         </div>
     </div>
+
+
 
 </div>

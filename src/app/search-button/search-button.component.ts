@@ -24,7 +24,7 @@ export class SearchButtonComponent implements OnInit {
   {
     const productTitle = Title;
     const data = {
-      title: productTitle
+      query: productTitle
     };
     const apiUrl = "https://sss-backend.vercel.app/search";
 
@@ -51,6 +51,8 @@ export class SearchButtonComponent implements OnInit {
     console.log(this.SearchValue);
     console.log("inside the search btn");
     this.router.navigate(['/search'],{queryParams:{query:this.SearchValue}});
+    
+    
   }
 
 
