@@ -1,13 +1,16 @@
-
-*{
-  background-color: #FFF9F9;
+* {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+.Featured, .Trending {
+  border: 3px solid #cccccc;
+  margin-left: 57px;
+  margin-right: 69px;
+  margin-top: 15px;
+}
+
 .card {
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-bottom: 5%;
-    margin-top: 5%;
-    
+    margin: 40px 300px;
 }
 
 .Banners{
@@ -20,11 +23,16 @@
   background-color: black;
 }
 
-#recent-product-title
-{
+#recent-product-title {
   text-align: center;
-  margin-top: 10%;
-  color:#39B5E0;
+  margin: 30px;
+  color:#000000;
+  font-size: 56px;
+}
+
+.breaker {
+  margin: 0 auto;
+  width: 75%;
 }
 
 .pagination-control

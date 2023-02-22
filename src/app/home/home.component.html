@@ -5,11 +5,12 @@
 
     </section>
 
-    <section class="recent products">
+    <section class=".product-section">
         <div *ngIf="this.showProduct; else elseBlock">
 
             <div class="Trending">
                 <h2 id="recent-product-title">Latest Products</h2>
+                <hr class="breaker"/>
                 <div class="card" *ngFor="let prod of recent | paginate:{itemsPerPage: this.itemsPerPage,currentPage:p,totalItems:this.totalProduct}">
                     <app-product-card [product]="prod"></app-product-card>
                 </div>
@@ -23,6 +24,7 @@
             <ng-template #elseBlock>
                 <div class="Featured">
                     <h2 id="recent-product-title">Featured Products</h2>
+                    <hr class="breaker"/>
                     <div class="card" *ngFor="let prod of products | paginate:{itemsPerPage: this.itemsPerPage,currentPage:p,totalItems:this.products.length}">
                         <app-product-card [product]="prod"></app-product-card>
                     </div>
