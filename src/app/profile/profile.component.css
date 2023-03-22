@@ -1,52 +1,49 @@
 .container {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    min-height: 100vh;
 }
 
-.profileHeader, .profileBody {
+.profileHeader, .profileBody, .addressSection {
+    background-color: #303030;
+    color: white;
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 0.5fr 1fr;
-    gap: 10px;
-    height: 40vh;
-    margin-top: 1%;
-    border: 5px solid rgb(228, 228, 228);
-    border-radius: 15px;
+    height: auto;
+    min-height: 400px;
+    margin: 1%;
+    padding: 1%;
+    /* border: 3px solid #cccccc; */
 }
 
 .imageSection {
     display: flex;
+    margin: 1%;
 }
 
 .userImage {
-    border-radius: 50%;
-    width: 300px;
-    height: 300px;
+    /* border-radius: 50%; */
+    width: 100%;
+    height: 100%;
     background: #ffffff;
-    border: 1px solid #000;
-    margin: auto auto;
-}
-
-.verticalLine {
-    border-left: 5px solid rgb(228, 228, 228);
-    height: 90%;
-    margin: auto auto;
-    border-radius: 15px;
+    border: 3px solid #cccccc;
 }
 
 .detailSection {
-    margin: auto 0;
+    margin: auto 5%;
     display: inline;
 }
 
 .detailText {
-    color: rgb(151, 151, 151);
+    color: rgb(184, 184, 184);
     display: inline;
 }
 
 .sectionHeading {
     display: flex;
     justify-content: center;
-    margin: 10px;
+    margin: 30px;
+    font-size: 56px;
 }
 
 .profileBody {
@@ -54,7 +51,15 @@
     justify-content: center;
 }
 
+.addressSection {
+    display: block;
+}
+
+.addressDetails {
+    display: inline;
+}
+
 .noLikes {
     margin: auto auto;
-    color: rgb(151, 151, 151);
+    color: rgb(184, 184, 184);
 }

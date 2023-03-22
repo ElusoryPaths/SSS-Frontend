@@ -1,3 +1,9 @@
 .navbar-form {
     width: 350px;
+    border-radius: 0;
+}
+
+.navbar-form-btn {
+    border-radius: 0;
+    margin-right: 10px;
 }

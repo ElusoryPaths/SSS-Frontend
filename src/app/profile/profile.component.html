@@ -2,19 +2,32 @@
     <h1 class="sectionHeading">Profile Information</h1>
     <div class="profileHeader">
         <div class="imageSection">
-            <img class="userImage" src="http://placebeard.it/480/480" alt="User Image" />
-            <div class="verticalLine"></div>
+            <img class="userImage" src="assets/profile-placeholder.jpg" alt="User Image" />
         </div>
         <div class="detailSection">
             <h2>Name: <p class="detailText">{{user.name}}</p></h2>
             <h2>Email: <p class="detailText">{{user.email}}</p></h2>
             <h2>Username: <p class="detailText">{{user.username}}</p></h2>
-            <h2>Account Type: <p class="detailText"><i>unavailable</i></p></h2>
+            <h2>Phone Number: <p class="detailText">{{user.phoneNumber}}</p></h2>
+            <h2>Account Type: <p class="detailText">{{user.accountType}}</p></h2>
         </div>
     </div>
 
-    <h1 class="sectionHeading">Your Liked Products</h1>
+    <h1 class="sectionHeading">Your Address</h1>
+    <div class="addressSection">
+        <div class="addressDetails">
+            <h2>Nickname: <p class="detailText">{{user.address.nickname}}</p></h2>
+            <h2>addressLine1: <p class="detailText">{{user.address.addressLine1}}</p></h2>
+            <h2>addressLine2: <p class="detailText">{{user.address.addressLine2}}</p></h2>
+            <h2>city: <p class="detailText">{{user.address.city}}</p></h2>
+            <h2>postalCode: <p class="detailText">{{user.address.postalCode}}</p></h2>
+            <h2>province: <p class="detailText">{{user.address.province}}</p></h2>
+            <h2>country: <p class="detailText">{{user.address.country}}</p></h2>
+        </div>
+    </div>
+
+    <h1 class="sectionHeading">Wishlist</h1>
     <div class="profileBody">
-        <h4 class="noLikes"><i>You Have Not Liked Any Products Yet...</i></h4>
+        <h4 class="noLikes"><i>You Have Not Wishlisted Any Products Yet...</i></h4>
     </div>
 </div>
