@@ -19,8 +19,20 @@ export class SearchPageComponent implements OnInit {
   searchValue : string = "";
   allProducts : Array<Product> = [];
   foundProducts : Array<Product> = [];
-  showResult !: boolean;
-  showNotFound !: boolean;
+  MensCollectionProducts : Array<Product> = [];
+  WomensCollectionProducts : Array<Product> = [];
+  ElectronicsCollectionProducts : Array<Product> = [];
+  JeweleryCollectionProducts : Array<Product> = [];
+  SortedProducts : Array<Product> = [];
+  
+
+  categoryName : string = "";
+  showCategoryResult: boolean = false;
+  showResult : boolean = false;
+  showNotFound : boolean = false;
+
+
+
 
   constructor(private route : ActivatedRoute, private productService : ProductService, private router : Router) { }
 
@@ -47,18 +59,11 @@ export class SearchPageComponent implements OnInit {
     });
     
 
-
-
-
-
-
-
-    
-
     this.productService.getRecentProducts().subscribe(
       (products) =>
       {
         this.allProducts = products;
+        this.loadByCategory();
         console.log("Pulled all products in the search page");
         if(this.prodTitle != "")
         {
@@ -80,6 +85,29 @@ export class SearchPageComponent implements OnInit {
     
 
 
+  }
+
+  loadByCategory() : void
+  {
+    for(let i = 0; i < this.allProducts.length; i++)
+    {
+      if(this.allProducts[i].category == "men's clothing")
+      {
+        this.MensCollectionProducts.push(this.allProducts[i]);
+      }
+      if(this.allProducts[i].category == "women's clothing")
+      {
+        this.WomensCollectionProducts.push(this.allProducts[i]);
+      }
+      if(this.allProducts[i].category == "electronics")
+      {
+        this.ElectronicsCollectionProducts.push(this.allProducts[i]);
+      }
+      if(this.allProducts[i].category == "jewelery")
+      {
+        this.JeweleryCollectionProducts.push(this.allProducts[i]);
+      }
+    }
   }
 
   findProducts(Title:string) : void
@@ -118,6 +146,68 @@ export class SearchPageComponent implements OnInit {
     this.prodTitle = "";
     this.searchValue = "";
     
+  }
+
+  categoryClicked(event:any)
+  { 
+    this.categoryName = event.target.innerText;
+    this.showCategoryResult = true;
+    this.showResult = false;
+    this.showNotFound = false;
+    this.foundProducts = [];
+    this.foundProducts.length = 0;
+
+    if(this.categoryName == "Mens Collection")
+    {
+      this.foundProducts = this.MensCollectionProducts;
+      console.log(this.foundProducts);
+    }
+    if(this.categoryName == "Womens Collection")
+    {
+      this.foundProducts = this.WomensCollectionProducts;
+      console.log(this.foundProducts);
+    }
+    if(this.categoryName == "Electronics")
+    {
+      this.foundProducts = this.ElectronicsCollectionProducts;
+    }
+    if(this.categoryName == "Jewelery")
+    {
+      this.foundProducts = this.JeweleryCollectionProducts;
+    }
+  }
+
+  sortingByClicked(event:any)
+  {
+    this.foundProducts = [];
+    this.foundProducts.length = 0;
+    this.foundProducts = this.allProducts;
+    this.showCategoryResult = true;
+    this.showResult = false;
+    this.showNotFound = false;
+    let sortByName : string = event.target.value;
+
+
+
+    if(sortByName == "PlowHigh")
+    {
+      this.foundProducts.sort((a,b)=>a.price - b.price);
+      console.log("Inside low to high")
+
+    }
+    if(sortByName == "PhighLow")
+    {
+      this.foundProducts.sort((a,b)=>b.price - a.price);
+    }
+    if(sortByName == "RlowHigh")
+    {
+      this.foundProducts.sort((a,b)=>a.rating.count - b.rating.count);
+    }
+    if(sortByName == "RhighLow")
+    {
+      this.foundProducts.sort((a,b)=>b.rating.count - a.rating.count);
+    }
+
   }
 
 

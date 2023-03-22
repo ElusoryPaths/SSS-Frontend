@@ -56,3 +56,24 @@
     
     padding-left: 20%;
 }
+
+
+.categories{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.category__1{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+.category__2{
+    display: flex;
+    flex-direction:row;
+    width: fit-content;
+}

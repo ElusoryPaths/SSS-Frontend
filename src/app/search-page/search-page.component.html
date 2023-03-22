@@ -11,22 +11,36 @@
                 </div>
 
                 <div class="categories ms-3 mt-5 mb-5">
-                    <button type="button" class="btn btn-outline-secondary me-2" placement="top"
-                        ngbPopover="Feature Coming Soon. Development in progress..." popoverTitle="Mens Collection">
-                        Mens Collection
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary me-2" placement="top"
-                        ngbPopover="Feature Coming Soon. Development in progress..." popoverTitle="Womens Collection">
-                        Womens Collection
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary me-2" placement="top"
-                        ngbPopover="Feature Coming Soon. Development in progress..." popoverTitle="Kids Collection">
-                        Kids Collection
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary me-2" placement="top"
-                        ngbPopover="Feature Coming Soon. Development in progress..." popoverTitle="Watch Collection">
-                        Watch Collection
-                    </button>
+                    <div class="category__1">
+                        <button type="button" (click)="categoryClicked($event)" class="btn btn-outline-secondary me-2" placement="top">
+                            Mens Collection
+                        </button>
+                        <button type="button" (click)="categoryClicked($event)" class="btn btn-outline-secondary me-2" placement="top">
+                            Womens Collection
+                        </button>
+                        <button type="button" (click)="categoryClicked($event)" class="btn btn-outline-secondary me-2" placement="top">
+                            Electronics
+                        </button>
+                        <button type="button" (click)="categoryClicked($event)" class="btn btn-outline-secondary me-2" placement="top">
+                            Jewelery
+                        </button>
+                    </div>
+
+                    <div class="category__2">
+                        <button type="button" value="PlowHigh" (click)="sortingByClicked($event)" class="btn btn-outline-secondary me-2" placement="top">
+                            Price Low-High
+                        </button>
+                        <button type="button" value="PhighLow" (click)="sortingByClicked($event)" class="btn btn-outline-secondary me-2" placement="top">
+                            Price High-Low
+                        </button>
+                        <button type="button" value="RlowHigh" (click)="sortingByClicked($event)" class="btn btn-outline-secondary me-2" placement="top">
+                            Ratings Low-High
+                        </button>
+                        <button type="button" value="RhighLow" (click)="sortingByClicked($event)" class="btn btn-outline-secondary me-2" placement="top">
+                            Ratings High-Low
+                        </button>
+                    </div>
+
                 </div>
 
                 <h1 class="error" *ngIf="showNotFound" >Sorry no products found</h1>
@@ -35,6 +49,12 @@
         </div>
     </div>
     <div *ngIf="showResult" class="search-result">
+        <div class="card" *ngFor="let prod of foundProducts">
+            <app-product-card [product]="prod"></app-product-card>
+        </div>
+    </div>
+
+    <div *ngIf="showCategoryResult" class="category-result">
         <div class="card" *ngFor="let prod of foundProducts">
             <app-product-card [product]="prod"></app-product-card>
         </div>
