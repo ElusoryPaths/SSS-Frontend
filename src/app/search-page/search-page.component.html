@@ -6,7 +6,7 @@
                 <div class="form">
                     <i class="fa fa-search" (click)="onClickSearchIcon()"></i>
                     <input type="text" class="form-control form-input" [(ngModel)]="searchValue" name="SearchValue"
-                        placeholder="search products" (keyup)="onClickSearchIcon()">
+                        placeholder="search products" (keyup.enter)="onClickSearchIcon()">
                     <i class="fa-sharp fa-solid fa-circle-xmark" (click)="onClickClearIcon()"></i>
                 </div>
 
@@ -55,7 +55,7 @@
     </div>
 
     <div *ngIf="showCategoryResult" class="category-result">
-        <div class="card" *ngFor="let prod of foundProducts">
+        <div class="card" *ngFor="let prod of CatProducts">
             <app-product-card [product]="prod"></app-product-card>
         </div>
     </div>

@@ -17,6 +17,8 @@ export class SearchPageComponent implements OnInit {
   prodTitle : string = "";
   currentUrl : string = "";
   searchValue : string = "";
+
+
   allProducts : Array<Product> = [];
   foundProducts : Array<Product> = [];
   MensCollectionProducts : Array<Product> = [];
@@ -24,6 +26,7 @@ export class SearchPageComponent implements OnInit {
   ElectronicsCollectionProducts : Array<Product> = [];
   JeweleryCollectionProducts : Array<Product> = [];
   SortedProducts : Array<Product> = [];
+  CatProducts: Array<Product> = [];
   
 
   categoryName : string = "";
@@ -62,7 +65,7 @@ export class SearchPageComponent implements OnInit {
     this.productService.getRecentProducts().subscribe(
       (products) => {
         this.allProducts = products;
-        this.loadByCategory();
+        this.foundProducts = [];
         console.log("Pulled all products in the search page");
         if (this.prodTitle != "") {
           this.findProducts(this.prodTitle);
@@ -75,58 +78,76 @@ export class SearchPageComponent implements OnInit {
     );
   }
 
-  loadByCategory() : void
-  {
-    for(let i = 0; i < this.allProducts.length; i++)
-    {
-      if(this.allProducts[i].category == "men's clothing")
-      {
-        this.MensCollectionProducts.push(this.allProducts[i]);
-      }
-      if(this.allProducts[i].category == "women's clothing")
-      {
-        this.WomensCollectionProducts.push(this.allProducts[i]);
-      }
-      if(this.allProducts[i].category == "electronics")
-      {
-        this.ElectronicsCollectionProducts.push(this.allProducts[i]);
-      }
-      if(this.allProducts[i].category == "jewelery")
-      {
-        this.JeweleryCollectionProducts.push(this.allProducts[i]);
-      }
-    }
-  }
+
 
 
 
   findProducts(Title: string): void {
-    console.log("inside findProducts")
+    console.log("inside findProducts");
+    this.foundProducts = [];
+    this.foundProducts.length = 0;
     let singleProd: Product;
     for (let i = 0; i < this.allProducts.length; i++) {
 
       if (this.allProducts[i].title.toLowerCase().split(' ').slice(0, 3).join(' ').includes(Title.toLocaleLowerCase().split(' ').slice(0, 3).join(' '))) {
         singleProd = this.allProducts[i];
-        console.log(singleProd);
         this.foundProducts.push(singleProd);
       }
     }
+    console.log("***Pushed to Found Products");
+    console.log(this.foundProducts);
+
     if (this.foundProducts.length == 0) {
       this.showNotFound = true;
     }
   }
 
+
+  loadByCategory(name:string) : void
+  {
+    this.CatProducts = [];
+    this.CatProducts.length = 0;
+    if(this.foundProducts.length > 0)
+    {
+      for(let i = 0; i < this.foundProducts.length; i++)
+      {
+        if(this.foundProducts[i].category == name)
+        {
+          this.CatProducts.push(this.foundProducts[i]);
+        }
+      }
+    }
+  }
+
   onClickSearchIcon(): void {
+    this.showNotFound = false;
+    this.showResult = false;
+    this.foundProducts = [];
+    this.foundProducts.length = 0;
+
     if (this.searchValue != "")
+    {
       this.findProducts(this.searchValue);
-    this.showResult = true;
+      this.showResult = true;
+    }
+
+
 
   }
 
   onClickClearIcon(): void {
     this.showNotFound = false;
     this.showResult = false;
+    this.showCategoryResult = false;
+
     this.foundProducts = [];
+    this.foundProducts.length = 0;
+    this.MensCollectionProducts = [];
+    this.WomensCollectionProducts = [];
+    this.ElectronicsCollectionProducts  = [];
+    this.JeweleryCollectionProducts  = [];
+    this.SortedProducts = [];
+
     this.prodTitle = "";
     this.searchValue = "";
 
@@ -138,59 +159,71 @@ export class SearchPageComponent implements OnInit {
     this.showCategoryResult = true;
     this.showResult = false;
     this.showNotFound = false;
-    this.foundProducts = [];
-    this.foundProducts.length = 0;
+    this.CatProducts = [];
 
     if(this.categoryName == "Mens Collection")
     {
-      this.foundProducts = this.MensCollectionProducts;
-      console.log(this.foundProducts);
+      this.loadByCategory("men's clothing");
     }
     if(this.categoryName == "Womens Collection")
     {
-      this.foundProducts = this.WomensCollectionProducts;
-      console.log(this.foundProducts);
+      this.loadByCategory("women's clothing");
     }
     if(this.categoryName == "Electronics")
     {
-      this.foundProducts = this.ElectronicsCollectionProducts;
+      this.loadByCategory("electronics");
     }
     if(this.categoryName == "Jewelery")
     {
-      this.foundProducts = this.JeweleryCollectionProducts;
+      this.loadByCategory("jewelery");
+    }
+
+    if(this.foundProducts.length == 0)
+    {
+      this.showCategoryResult = true;
+      this.showResult = false;
+      this.showNotFound = true;
     }
   }
 
   sortingByClicked(event:any)
   {
-    this.foundProducts = [];
-    this.foundProducts.length = 0;
-    this.foundProducts = this.allProducts;
-    this.showCategoryResult = true;
-    this.showResult = false;
-    this.showNotFound = false;
-    let sortByName : string = event.target.value;
+    if(this.foundProducts.length > 0)
+    {
+      this.showCategoryResult = false;
+      this.showResult = true;
+      this.showNotFound = false;
+      let sortByName : string = event.target.value;
 
 
+      if(sortByName == "PlowHigh")
+      {
+        this.foundProducts.sort((a,b)=>a.price - b.price);
+        console.log("Inside low to high")
+  
+      }
+      if(sortByName == "PhighLow")
+      {
+        this.foundProducts.sort((a,b)=>b.price - a.price);
+      }
+      if(sortByName == "RlowHigh")
+      {
+        this.foundProducts.sort((a,b)=>a.rating.count - b.rating.count);
+      }
+      if(sortByName == "RhighLow")
+      {
+        this.foundProducts.sort((a,b)=>b.rating.count - a.rating.count);
+      }
 
-    if(sortByName == "PlowHigh")
-    {
-      this.foundProducts.sort((a,b)=>a.price - b.price);
-      console.log("Inside low to high")
+      
+    }
 
+    else{
+      this.showCategoryResult = false;
+      this.showResult = false;
+      this.showNotFound = true;
     }
-    if(sortByName == "PhighLow")
-    {
-      this.foundProducts.sort((a,b)=>b.price - a.price);
-    }
-    if(sortByName == "RlowHigh")
-    {
-      this.foundProducts.sort((a,b)=>a.rating.count - b.rating.count);
-    }
-    if(sortByName == "RhighLow")
-    {
-      this.foundProducts.sort((a,b)=>b.rating.count - a.rating.count);
-    }
+
 
   }
 
