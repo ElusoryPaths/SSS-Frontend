@@ -24,4 +24,8 @@ export class ProductService {
     return this.http.post(`${this.apiUrl}/product/${id}/addreview`, review)
   }
 
+  public addProduct(product: Product): Observable<any> {
+    return this.http.post(`${this.apiUrl}/add/product`, product)
+  }
+
 }

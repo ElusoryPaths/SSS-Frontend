@@ -16,6 +16,10 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/products">Products</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/seller" *ngIf="accountType == 'seller'">Dashboard</a>
+        </li>
+
       </ul>
       <!-- Left links -->
 

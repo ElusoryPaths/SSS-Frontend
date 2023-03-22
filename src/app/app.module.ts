@@ -26,6 +26,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductReviewComponent } from './product-review/product-review.component';
 import { SearchButtonComponent } from './search-button/search-button.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { SellerDashComponent } from './seller-dash/seller-dash.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 @NgModule({
@@ -48,6 +50,8 @@ import { SearchPageComponent } from './search-page/search-page.component';
     ProductReviewComponent,
     SearchButtonComponent,
     SearchPageComponent,
+    SellerDashComponent,
+    AddProductComponent,
     
 
   ],
