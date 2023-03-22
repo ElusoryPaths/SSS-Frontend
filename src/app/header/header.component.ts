@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   token: any;
+  accountType: string | null = "";
   querySub: Subscription[] = [];
 
   constructor(private router: Router, private auth: AuthService) { }
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.token = this.auth.readToken();
       }
     }));
+    this.accountType = localStorage.getItem('accountType')
   }
 
   onSignout(): void {

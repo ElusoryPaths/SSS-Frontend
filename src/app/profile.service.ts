@@ -13,8 +13,6 @@ export class ProfileService {
 
   public getUser(): User {
     let user: User = new User();
-    user.address = new Address();
-
     user.accountType = localStorage.getItem('accountType') || undefined;
     user.firstName = localStorage.getItem('firstName') || undefined;
     user.lastName = localStorage.getItem('lastName') || undefined;
@@ -23,12 +21,9 @@ export class ProfileService {
     user.email = localStorage.getItem('email') || undefined;
     user.username = localStorage.getItem('username') || undefined;
 
-    user.address.addressLine1 = localStorage.getItem('addressLine1') || undefined;
-    user.address.addressLine2 = localStorage.getItem('addressLine2') || undefined;
-    user.address.city = localStorage.getItem('city') || undefined;
-    user.address.postalCode = localStorage.getItem('postalCode') || undefined;
-    user.address.province = localStorage.getItem('province') || undefined;
-    user.address.country = localStorage.getItem('country') || undefined;
+    if (user.accountType == "buyer") {
+      user.address = this.getAddress()
+    }
     return user;
   }
 
@@ -43,12 +38,27 @@ export class ProfileService {
     localStorage.setItem('email', user.email || "");
     localStorage.setItem('name', user.firstName + " " + user.lastName || "");
 
-    localStorage.setItem('nickname', user.address.nickname || "");
-    localStorage.setItem('addressLine1', user.address.addressLine1 || "");
-    localStorage.setItem('addressLine2', user.address.addressLine2 || "");
-    localStorage.setItem('city', user.address.city || "");
-    localStorage.setItem('postalCode', user.address.postalCode || "");
-    localStorage.setItem('province', user.address.province || "");
-    localStorage.setItem('country', user.address.country || "");
+    if (user.address) this.setAddress(user.address)
+  }
+
+  public setAddress(addr: Address) {
+    localStorage.setItem('nickname', addr.nickname || "");
+    localStorage.setItem('addressLine1', addr.addressLine1 || "");
+    localStorage.setItem('addressLine2', addr.addressLine2 || "");
+    localStorage.setItem('city', addr.city || "");
+    localStorage.setItem('postalCode', addr.postalCode || "");
+    localStorage.setItem('province', addr.province || "");
+    localStorage.setItem('country', addr.country || "");
+  }
+
+  public getAddress(): Address {
+    let address = new Address()
+    address.addressLine1 = localStorage.getItem('addressLine1') || undefined;
+    address.addressLine2 = localStorage.getItem('addressLine2') || undefined;
+    address.city = localStorage.getItem('city') || undefined;
+    address.postalCode = localStorage.getItem('postalCode') || undefined;
+    address.province = localStorage.getItem('province') || undefined;
+    address.country = localStorage.getItem('country') || undefined;
+    return address
   }
 }
