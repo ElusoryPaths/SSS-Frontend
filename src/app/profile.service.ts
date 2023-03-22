@@ -12,6 +12,10 @@ export class ProfileService {
 
   public getUser(): User {
     let user: User = new User();
+    user.accountType = localStorage.getItem('accountType') || undefined;
+    user.firstName = localStorage.getItem('firstName') || undefined;
+    user.lastName = localStorage.getItem('lastName') || undefined;
+    user.phoneNumber = localStorage.getItem('phoneNumber') || undefined;
     user.name = localStorage.getItem('name') || undefined;
     user.email = localStorage.getItem('email') || undefined;
     user.username = localStorage.getItem('username') || undefined;
@@ -19,8 +23,13 @@ export class ProfileService {
   }
 
   public setUser(user: User): void {
+    console.log(user);
+    localStorage.setItem('accountType', user.accountType || "");
+    localStorage.setItem('firstName', user.firstName || "");
+    localStorage.setItem('lastName', user.lastName || "");
+    localStorage.setItem('phoneNumber', user.phoneNumber || "");
     localStorage.setItem('username', user.username || "");
     localStorage.setItem('email', user.email || "");
-    localStorage.setItem('name', user.name || "");
+    localStorage.setItem('name', user.firstName + " " + user.lastName || "");
   }
 }
