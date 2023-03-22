@@ -3,7 +3,7 @@
     min-height: 100vh;
 }
 
-.profileHeader, .profileBody {
+.profileHeader, .profileBody, .addressSection {
     background-color: #303030;
     color: white;
     display: grid;
@@ -49,6 +49,14 @@
 .profileBody {
     display: flex;
     justify-content: center;
+}
+
+.addressSection {
+    display: block;
+}
+
+.addressDetails {
+    display: inline;
 }
 
 .noLikes {
