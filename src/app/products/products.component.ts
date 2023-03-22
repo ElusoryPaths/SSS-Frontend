@@ -12,4 +12,17 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showAllProducts() : void
+  {
+    console.log("Show all prodcuts clicked");
+  }
+  showLatestProducts() : void
+  {
+    console.log("Show Latest prodcuts clicked");
+  }
+  showFeaturedProducts() : void
+  {
+    console.log("Show Featured prodcuts clicked");
+  }
+
 }
