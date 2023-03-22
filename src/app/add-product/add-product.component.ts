@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import Product from '../Product';
 import { ProductService } from '../product.service';
@@ -26,7 +27,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
     reviews: []
   };
 
-  constructor(private prodServ: ProductService) { }
+  constructor(private prodServ: ProductService, private router: Router ) { }
 
   ngOnDestroy(): void {
     this.querySub.forEach((subscription) => subscription.unsubscribe());
@@ -41,7 +42,10 @@ export class AddProductComponent implements OnInit, OnDestroy {
     console.log(this.product);
     this.querySub.push(
       this.prodServ.addProduct(this.product).subscribe({
-        next: (success) => { console.log(success) },
+        next: (success) => { 
+          console.log(success) 
+          this.router.navigate(['/seller']);
+        },
         error: (err) => { console.log(err) }
       })
     )

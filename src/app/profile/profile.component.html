@@ -13,8 +13,9 @@
         </div>
     </div>
 
-    <h1 class="sectionHeading">Your Address</h1>
-    <div class="addressSection">
+    
+    <div class="addressSection" *ngIf="user.address">
+        <h1 class="sectionHeading">Your Address</h1>
         <div class="addressDetails">
             <h2>Nickname: <p class="detailText">{{user.address.nickname}}</p></h2>
             <h2>addressLine1: <p class="detailText">{{user.address.addressLine1}}</p></h2>
@@ -27,7 +28,10 @@
     </div>
 
     <h1 class="sectionHeading">Wishlist</h1>
-    <div class="profileBody">
-        <h4 class="noLikes"><i>You Have Not Wishlisted Any Products Yet...</i></h4>
+    <div class="profileBody" >
+        <h4 class="noLikes" *ngIf="user.wishlist.length == 0"><i>You Have Not Wishlisted Any Products Yet...</i></h4>
+        <div class="wishItem" *ngFor="let item of user.wishlist">
+            <p>{{item.title}}: ${{item.price}} <button class="btn btn-warning" (click)="onDelete(item.id)">Delete</button></p> 
+        </div>
     </div>
 </div>

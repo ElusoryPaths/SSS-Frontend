@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import User from './User';
 import Address from './Address';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class ProfileService {
     user.email = localStorage.getItem('email') || undefined;
     user.username = localStorage.getItem('username') || undefined;
 
+
     if (user.accountType == "buyer") {
       user.address = this.getAddress()
     }
@@ -29,7 +31,8 @@ export class ProfileService {
 
   public setUser(user: User): void {
     console.log(user);
-    
+
+
     localStorage.setItem('accountType', user.accountType || "");
     localStorage.setItem('firstName', user.firstName || "");
     localStorage.setItem('lastName', user.lastName || "");
@@ -61,4 +64,14 @@ export class ProfileService {
     address.country = localStorage.getItem('country') || undefined;
     return address
   }
+
+
+  public refreshUser(email: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user/fetch/${email}`)
+  }
+
+  public deleteWish(email: string, id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/user/delete/wishlist/${email}/${id}`)
+  }
+
 }
