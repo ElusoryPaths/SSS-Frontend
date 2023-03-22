@@ -39,9 +39,13 @@ export class HomeComponent implements OnInit, OnDestroy {
           console.log("Successfully pulled recent products...")
           console.log(success);
 
-          for (let i = 0; i < 15; i++) {
-            if (i < 5) this.featured.push(this.products[i]);
-            else this.recent.push(this.products[i]);
+          for(let i = this.products.length - 1; i > this.products.length - 6; i--)
+          {
+            this.recent.push(this.products[i]);
+          }
+          for(let i = this.products.length - 1; i > this.products.length - 16; i--)
+          {
+            this.featured.push(this.products[i]);
           }
           
 
