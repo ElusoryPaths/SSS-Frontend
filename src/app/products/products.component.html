@@ -13,8 +13,32 @@
         </div>
     </div>
 
-    <div class="productPage__Body">
-
+    <div class="productPage__Body" >
+        <section >
+            <div *ngIf="this.showallproducts">
+                <div class="card" *ngFor="let prod of products | paginate:{itemsPerPage: this.itemsPerPage,currentPage:p,totalItems:this.products.length}">
+                    <app-product-card [product]="prod"></app-product-card>
+                </div>
+            </div>
+            <div *ngIf="this.showlatestproducts ">
+                <div class="card" *ngFor="let prod of latest | paginate:{itemsPerPage: this.itemsPerPage,currentPage:p,totalItems:this.latest.length}">
+                    <app-product-card [product]="prod"></app-product-card>
+                </div>
+            </div>
+            <div *ngIf="this.showfeaturedproducts">
+                <div class="card" *ngFor="let prod of featured | paginate:{itemsPerPage: this.itemsPerPage,currentPage:p,totalItems:this.featured.length}">
+                    <app-product-card [product]="prod"></app-product-card>
+                </div>
+            </div>
+            <div class="pagination-control">
+                <style>
+                    .pagination-control ::ng-deep .ngx-pagination .current {
+                        background: #FCE700;
+                    }
+                </style>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </section>
     </div>
 
 </div>
