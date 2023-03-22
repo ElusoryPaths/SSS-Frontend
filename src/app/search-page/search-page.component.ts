@@ -98,28 +98,7 @@ export class SearchPageComponent implements OnInit {
     }
   }
 
-  loadByCategory() : void
-  {
-    for(let i = 0; i < this.allProducts.length; i++)
-    {
-      if(this.allProducts[i].category == "men's clothing")
-      {
-        this.MensCollectionProducts.push(this.allProducts[i]);
-      }
-      if(this.allProducts[i].category == "women's clothing")
-      {
-        this.WomensCollectionProducts.push(this.allProducts[i]);
-      }
-      if(this.allProducts[i].category == "electronics")
-      {
-        this.ElectronicsCollectionProducts.push(this.allProducts[i]);
-      }
-      if(this.allProducts[i].category == "jewelery")
-      {
-        this.JeweleryCollectionProducts.push(this.allProducts[i]);
-      }
-    }
-  }
+
 
   findProducts(Title: string): void {
     console.log("inside findProducts")
