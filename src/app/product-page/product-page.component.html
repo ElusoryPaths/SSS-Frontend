@@ -10,6 +10,9 @@
                 <p>${{product.price}}</p>
 
                 <button class="btn btn-warning" style="width:100%">Add to Cart</button>
+                <br>
+                <button class="btn btn-primary MarginTop" style="width:100%" (click)="onClick()" *ngIf="!wished">Add to WishList</button>
+                <button class="btn btn-primary MarginTop" style="width:100%" (click)="onClick()" *ngIf="wished">Remove from WishList</button>
             </div>
         </div>
 

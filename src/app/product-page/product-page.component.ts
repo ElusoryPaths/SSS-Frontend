@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router'
 import { Subscription } from 'rxjs';
 import Product from '../Product';
 import { ProductService } from '../product.service';
+import { ProfileService } from '../profile.service';
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -14,8 +15,12 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 
   id: string = "";
   product!: Product;
+  wished: boolean = false;
 
-  constructor(private route: ActivatedRoute, private productServ: ProductService, private router: Router) { }
+  constructor(private route: ActivatedRoute,
+    private productServ: ProductService,
+    private router: Router,
+    private profServ: ProfileService) { }
 
   ngOnDestroy(): void {
     this.querySub.forEach((subscription) => subscription.unsubscribe());
@@ -36,13 +41,46 @@ export class ProductPageComponent implements OnInit, OnDestroy {
             } else {
               this.product = success;
             }
-            
+
           },
-          error: (error) => { 
-            console.error(error) 
+          error: (error) => {
+            console.error(error)
           }
         })
       )
     }
+  }
+
+  onClick() {
+    let mail = localStorage.getItem('email') || ""
+    let found = false;
+    this.profServ.refreshUser(mail).subscribe({
+      next: (success) => { 
+        for (let item of success.wishlist) {
+          if (item.id == this.product.id) found = true;
+        }
+       },
+      error: (error) => { console.error(error) }
+    })
+    if (found) return;
+    
+    let wishItem = {
+      email: mail,
+      product: this.product
+    }
+    this.querySub.push(
+      this.productServ.addProductToWish(wishItem).subscribe({
+        next: (success) => {
+          console.log(success)
+          let mail = localStorage.getItem('email')
+          if (mail) this.querySub.push(
+            this.profServ.refreshUser(mail).subscribe({
+              next: (success) => { this.profServ.setUser(success) },
+              error: (error) => { console.error(error) }
+            })
+          )
+        },
+        error: (error) => { console.error(error) }
+      }))
   }
 }

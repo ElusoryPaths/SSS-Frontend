@@ -24,4 +24,16 @@ export class ProductService {
     return this.http.post(`${this.apiUrl}/product/${id}/addreview`, review)
   }
 
+  public addProduct(product: Product): Observable<any> {
+    return this.http.post(`${this.apiUrl}/add/product`, product)
+  }
+
+  public addProductToWish(obj: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/user/add/wishlist`, obj)
+  } 
+
+  public deleteProductFromWish(obj: any): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/user/delete/wishlist`, obj)
+  } 
+
 }

@@ -21,5 +21,23 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.user = this.profile.getUser();
+    this.refresh()
+  }
+
+  onDelete(id: any) {
+    console.log(id)
+    let mail: string = this.user.email || ""
+    if (this.user) this.querySub.push(this.profile.deleteWish(mail, id).subscribe({
+      next: (success) => { this.refresh() },
+      error: (error) => { console.error(error) }
+    }))
+  }
+
+  refresh() {
+    let mail: string = this.user.email || ""
+    this.querySub.push(this.profile.refreshUser(mail).subscribe({
+      next: (success) => { this.user.wishlist = success.wishlist },
+      error: (error) => { console.error(error) }
+    }))
   }
 }

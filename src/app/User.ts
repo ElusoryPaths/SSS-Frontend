@@ -11,4 +11,5 @@ export default class User{
     name!: string | undefined;
     phoneNumber!: string | undefined;
     address!: Address;
+    wishlist: Array<any> = [];
 }
