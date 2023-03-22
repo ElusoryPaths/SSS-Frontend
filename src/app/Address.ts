@@ -1,9 +1,9 @@
 export default class Address {
     nickname: string = "home";
-    addressLine1!: string;
-    addressLine2!: string;
-    city!: string;
-    province!: string;
-    postalCode!: string;
-    country!: string;
+    addressLine1!: string | undefined;
+    addressLine2!: string | undefined;
+    city!: string | undefined;
+    province!: string | undefined;
+    postalCode!: string | undefined;
+    country!: string | undefined;
 }
