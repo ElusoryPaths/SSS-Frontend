@@ -1,1 +1,30 @@
-<p>checkout-page works!</p>
+<div class="container">
+    <div class="row">
+
+        <h2>Checkout Cart</h2>
+
+        <div class="col-md-8">
+            <div class="row" *ngFor="let product of products; let i = index">
+                <div class="col-md-3">
+                    <img [src]="product.product.image" class="img-fluid" height="150" width="150" />
+                </div>
+                <div class="col-md-7">
+                    <h5 class="card-title">{{product.product.title}}</h5>
+                    <p>rating: {{product.product.rating.rate}} reviews: {{product.product.rating.count}}</p>
+                    <p>${{product.product.price}}</p>
+                </div>
+                <div class="col-md-2">
+                    <button (click)="onRemove(i)">-</button>{{product.count}}<button (click)="onAdd(i)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <p>Product Price: ${{price}} </p>
+            <p>Taxes: ${{tax}}</p>
+            <p>Total amount: ${{total}}</p>
+            <button>Proceed to Payment</button>
+        </div>
+    </div>
+
+</div>

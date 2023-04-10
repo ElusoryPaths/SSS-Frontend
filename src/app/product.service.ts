@@ -51,24 +51,34 @@ export class ProductService {
       cartArr.forEach((productInCart: any) => {
         if (productInCart.product.id == product.id) {
           productInCart.count += 1
-          localStorage.set('cart', cartArr)
+          this.updateCart(cartArr);
           updated = true
         }
       })
 
       if (!updated) {
         cartArr.push(productObj)
-        localStorage.set('cart', cartArr)
+        this.updateCart(cartArr);
       }
     } else {
       cartArr.push(productObj)
-      localStorage.set('cart', cartArr)
+      this.updateCart(cartArr);
     }
     
     console.log(this.getCart());
   }
 
   public getCart() {
-    return localStorage.get('cart') || []
+    return localStorage.get('cart') || [];
+  }
+
+  public updateCart(products: any) {
+    localStorage.set('cart', products);
+  }
+
+  public removeItemFromCart(index: number) {
+    let cart = this.getCart();
+    cart.splice(index, 1);
+    this.updateCart(cart);
   }
 }
