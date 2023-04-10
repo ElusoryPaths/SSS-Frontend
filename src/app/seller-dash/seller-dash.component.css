@@ -1,0 +1,11 @@
+.container {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.sectionHeading {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    font-size: 56px;
+}
