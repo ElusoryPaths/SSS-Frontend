@@ -28,6 +28,7 @@ import { SearchButtonComponent } from './search-button/search-button.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SellerDashComponent } from './seller-dash/seller-dash.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { AddProductComponent } from './add-product/add-product.component';
     SearchPageComponent,
     SellerDashComponent,
     AddProductComponent,
+    CheckoutPageComponent,
     
 
   ],

@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SellerDashComponent } from './seller-dash/seller-dash.component';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "search", component: SearchPageComponent },
   { path: "seller", component: SellerDashComponent, canActivate: [AuthGuardService] },
   { path: "seller/add", component: AddProductComponent, canActivate: [AuthGuardService] },
+  {path: "checkout", component: CheckoutPageComponent, canActivate: [AuthGuardService]},
   { path: "**", component: PageNotFoundComponent }
 ];
 
