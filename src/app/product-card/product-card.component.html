@@ -11,6 +11,6 @@
       <h5 class="card-title">{{product.title}}</h5>
       <p class="card-text">{{product.description}}</p>
       <p>${{product.price}}</p>
-      <a routerLink="/" class="btn btn-primary">Add to Cart</a>
+      <button class="btn btn-warning" style="width:100%" (click)="addToCart(product)">Add to Cart</button>
     </div>
 </div>

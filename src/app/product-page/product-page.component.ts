@@ -4,6 +4,9 @@ import { Subscription } from 'rxjs';
 import Product from '../Product';
 import { ProductService } from '../product.service';
 import { ProfileService } from '../profile.service';
+
+const localStorage = require('local-storage-json');
+
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -82,5 +85,9 @@ export class ProductPageComponent implements OnInit, OnDestroy {
         },
         error: (error) => { console.error(error) }
       }))
+  }
+
+  addToCart(product: Product) {
+    this.productServ.addToCart(product)
   }
 }

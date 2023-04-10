@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import Product from '../Product';
-
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-card',
@@ -10,7 +10,7 @@ import Product from '../Product';
 export class ProductCardComponent implements OnInit, OnDestroy {
   @Input() product!: Product;
 
-  constructor() { }
+  constructor(private productServ: ProductService) { }
 
   ngOnDestroy(): void {
   }
@@ -19,4 +19,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
     
   }
 
+  addToCart(product: Product) {
+    this.productServ.addToCart(product)
+  }
 }

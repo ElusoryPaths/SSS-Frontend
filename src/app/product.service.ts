@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import Product from './Product';
 import Review from './Review';
 
+const localStorage = require('local-storage-json');
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,4 +38,37 @@ export class ProductService {
     return this.http.delete(`${this.apiUrl}/user/delete/wishlist`, obj)
   } 
 
+  public addToCart(product: Product): void {
+    let cartArr = this.getCart();
+    let productObj = {
+      product: product,
+      count: 1
+    }
+    
+    if (cartArr) {
+      let updated = false
+
+      cartArr.forEach((productInCart: any) => {
+        if (productInCart.product.id == product.id) {
+          productInCart.count += 1
+          localStorage.set('cart', cartArr)
+          updated = true
+        }
+      })
+
+      if (!updated) {
+        cartArr.push(productObj)
+        localStorage.set('cart', cartArr)
+      }
+    } else {
+      cartArr.push(productObj)
+      localStorage.set('cart', cartArr)
+    }
+    
+    console.log(this.getCart());
+  }
+
+  public getCart() {
+    return localStorage.get('cart') || []
+  }
 }
