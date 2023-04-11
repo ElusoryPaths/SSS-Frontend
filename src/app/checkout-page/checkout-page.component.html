@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-md-4">
-            <div class="shoppingPrice">
+            <div class="shoppingPrice" *ngIf="products.length > 0">
                 <p>Product Price: ${{price}} </p>
                 <p>Taxes: ${{tax}}</p>
                 <p>Total amount: ${{total}}</p>
