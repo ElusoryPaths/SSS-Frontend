@@ -1,4 +1,29 @@
-.container {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    min-height: 100vh;
+h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
 }
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.product{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.ShoppingCart__Body__Price
+{
+    padding: 30px;
+}
+
+
+
