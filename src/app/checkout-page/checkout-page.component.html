@@ -1,30 +1,45 @@
-<div class="container">
-    <div class="row">
+<div class="">
+    <div class="ShoppingCart">
 
-        <h2>Checkout Cart</h2>
 
-        <div class="col-md-8">
-            <div class="row" *ngFor="let product of products; let i = index">
-                <div class="col-md-3">
-                    <img [src]="product.product.image" class="img-fluid" height="150" width="150" />
+
+        <h2>Welcome to your Shopping Cart</h2>
+
+        <div class="body">
+            <div class="ShoppingCart__Body">
+                <div class="ShoppingCart__Body__Product" *ngFor="let product of products; let i = index">
+    
+                    <div class="product">
+                        <div class="">
+                            <img [src]="product.product.image" class="img-fluid" height="150" width="150" />
+                        </div>
+                        <div class="">
+                            <h5 class="">{{product.product.title}}</h5>
+                            <p>rating: {{product.product.rating.rate}} reviews: {{product.product.rating.count}}</p>
+                            <p>${{product.product.price}}</p>
+                        </div>
+                        <div class="">
+                            <button (click)="onRemove(i)">-</button>{{product.count}}<button (click)="onAdd(i)">+</button>
+                        </div>
+                    </div>
+    
                 </div>
-                <div class="col-md-7">
-                    <h5 class="card-title">{{product.product.title}}</h5>
-                    <p>rating: {{product.product.rating.rate}} reviews: {{product.product.rating.count}}</p>
-                    <p>${{product.product.price}}</p>
-                </div>
-                <div class="col-md-2">
-                    <button (click)="onRemove(i)">-</button>{{product.count}}<button (click)="onAdd(i)">+</button>
-                </div>
+    
+    
             </div>
+            <div class="ShoppingCart__Body__Price">
+                <p>Product Price: ${{price}} </p>
+                <p>Taxes: ${{tax}}</p>
+                <p>Total amount: ${{total}}</p>
+                <button>Proceed to Payment</button>
+            </div>
+    
         </div>
 
-        <div class="col-md-4">
-            <p>Product Price: ${{price}} </p>
-            <p>Taxes: ${{tax}}</p>
-            <p>Total amount: ${{total}}</p>
-            <button>Proceed to Payment</button>
-        </div>
+
+
     </div>
+
+
 
 </div>
