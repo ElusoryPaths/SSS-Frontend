@@ -38,6 +38,14 @@ export class ProductService {
     return this.http.delete(`${this.apiUrl}/user/delete/wishlist`, obj)
   } 
 
+  public addToView(id: string) {
+    return this.http.post(`${this.apiUrl}/product/${id}/addview/`, 1)
+  }
+
+  public addToViewCart(id: string) {
+    return this.http.post(`${this.apiUrl}/product/${id}/addviewcart/`, 1)
+  }
+
   public addToCart(product: Product): void {
     let cartArr = this.getCart();
     let productObj = {

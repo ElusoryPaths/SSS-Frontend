@@ -11,5 +11,7 @@ export default interface Product {
         rate: number;
         count: number;
     }
+    views: number
+    addedToCart: number
     reviews: Array<Review>
 }
