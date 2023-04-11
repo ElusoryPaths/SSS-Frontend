@@ -17,6 +17,11 @@
     margin-bottom: 20px;
 }
 
+.noProducts {
+    text-align: center;
+    padding: 20px;
+}
+
 .divider {
     margin: 20px 0;
 }

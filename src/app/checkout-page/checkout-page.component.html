@@ -3,6 +3,18 @@
         <h1 class="sectionHeading">Shopping Cart</h1>
 
         <div class="col-md-8 shoppingHeader">
+            <div class="noProducts" *ngIf="products.length == 0">
+                <h4>
+                    <i>
+                        You do not have any items in this cart...
+                    </i>
+                </h4>
+                <button class="btn btn-warning me-2">
+                    <a routerLink="/products" routerLinkActive="active" class="nav-link">
+                        Start Shopping
+                    </a>
+                </button>
+            </div>
             <div class="row" *ngFor="let product of products; let i = index">
                 <div class="col-md-3">
                     <img [src]="product.product.image" class="img-fluid" height="150" width="150" />
