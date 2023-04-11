@@ -47,6 +47,9 @@ export class ProductsComponent implements OnInit {
         }
       )
     )
+    this.showallproducts = true;
+    this.showlatestproducts = false;
+    this.showfeaturedproducts = false;
   }
 
   showAllProducts() : void
