@@ -9,3 +9,17 @@
     margin: 30px;
     font-size: 56px;
 }
+
+.sellerHeader {
+    background-color: #303030;
+    color: white;
+    height: auto;
+    /* min-height: 400px; */
+    margin: 1%;
+    padding: 1%;
+}
+
+.headerDetails {
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,29 +1,29 @@
-h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-}
-.body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+
+.sectionHeading {
+    font-size: 56px;
+    margin: 30px 0;
+    text-align: center;
 }
 
-
-.product{
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    padding: 20px;
+.shoppingHeader {
+    background-color: #303030;
+    color: white;
+    height: auto;
+    padding: 1%;
+    margin-bottom: 20px;
 }
 
-
-.ShoppingCart__Body__Price
-{
-    padding: 30px;
+.divider {
+    margin: 20px 0;
 }
 
+.price {
+    font-size: 24px;
+}
 
-
+.shoppingPrice {
+    width: 250px;
+    padding: 25px;
+    border: 1px solid black;
+}

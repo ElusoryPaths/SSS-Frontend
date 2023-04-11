@@ -1,51 +1,54 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-
-            <div class="well">
-                <h2>Add Product</h2>
-                <p>Enter Product Information:
+    <h1 class="sectionHeading">Add Product</h1>
+    <div class="sellerHeader">
+        <button class="btn btn-warning me-2">
+            <a routerLink="/seller" routerLinkActive="active" class="nav-link">
+                Go Back
+            </a>
+        </button>
+        <h3 class="Heading">Enter Product Information:</h3>
+    
+        <div class="headerDetails">
+            <div>
+                <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                    <div class="form-group">
+                        <label class="control-label" for="title">NAME:</label>
+                        <input type="text" class="form-control" id="title" name="title" [(ngModel)]="product.title">
+                    </div>
+            
+                    <div class="form-group">
+                        <label class="control-label" for="price">PRICE:</label>
+                        <input type="text" class="form-control" id="price" name="price" [(ngModel)]="product.price">
+                    </div>
+            
+                    <div class="form-group">
+                        <label class="control-label" for="category">CATEGORY:</label>
+                        <input type="text" class="form-control" id="category" name="category"
+                            [(ngModel)]="product.category">
+                    </div>
+            
+                    <div class="form-group">
+                        <label class="control-label" for="description">DESCRIPTION:</label>
+                        <input type="textarea" class="form-control" id="description" name="description"
+                            [(ngModel)]="product.description">
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="control-label" for="image">IMAGE:</label>
+                        <br>
+                        <input type="file" class="file-upload" (change)="onchange($event)">
+                    </div>
+            
+                    <div class="alert alert-danger" *ngIf="warning">
+                        {{warning}}
+                    </div>
+    
+                    <button class="btn btn-warning pull-right" type="submit">Submit</button>
+                </form>
             </div>
-
-            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-                <div class="form-group">
-                    <label class="control-label" for="title">Name:</label>
-                    <input type="text" class="form-control" id="title" name="title" [(ngModel)]="product.title">
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="price">Price:</label>
-                    <input type="text" class="form-control" id="price" name="price" [(ngModel)]="product.price">
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="category">Category:</label>
-                    <input type="text" class="form-control" id="category" name="category"
-                        [(ngModel)]="product.category">
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="description">Description:</label>
-                    <input type="textarea" class="form-control" id="description" name="description"
-                        [(ngModel)]="product.description">
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="image">Image:</label>
-                    <br>
-                    <input type="file" class="file-upload" (change)="onchange($event)">
-                </div>
-
-                <div class="alert alert-danger" *ngIf="warning">
-                    {{warning}}
-                </div>
-
-
-                <br>
-                <button class="btn btn-primary pull-right" type="submit">Add Product</button>
-
-            </form>
+            <div>
+                <img class="productImage" src="assets/product.png" alt="Product Icon" />
+            </div>
         </div>
-
     </div>
 </div>

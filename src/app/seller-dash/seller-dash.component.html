@@ -1,15 +1,23 @@
-<div class="seller-dash">
-    <div class="container">
-        <h1 class="sectionHeading">Seller Dashboard</h1>
-        <div class="profileHeader">
-            <div class="detailSection">
-                <h2>Name: <p class="detailText"></p></h2>
-                <h2>Email: <p class="detailText"></p></h2>
-                <h2>Username: <p class="detailText"></p></h2>
-                <h2>Phone Number: <p class="detailText"></p></h2>
-                <h2>Account Type: <p class="detailText"></p></h2>
-            </div>
+<div class="container">
+    <h1 class="sectionHeading">Dashboard</h1>
+    <div class="sellerHeader">
+        <div class="headerDetails">
+            <h2>Add Product</h2>
+            <button class="btn btn-warning me-2">
+                <a routerLink="/seller/add" routerLinkActive="active" class="nav-link">
+                    Open Form
+                </a>
+            </button>
         </div>
-        <button class="btn btn-outline-secondary me-2"><a routerLink="/seller/add" routerLinkActive="active" class="nav-link">Add Product</a></button>
+    </div>
+
+    <h1 class="sectionHeading">Added Products</h1>
+    <div class="sellerHeader">
+        <h2>List of products...</h2>
+    </div>
+
+    <h1 class="sectionHeading">Analytics</h1>
+    <div class="sellerHeader">
+        <h2>Charts & general analytics per product the seller has added...</h2>
     </div>
 </div>

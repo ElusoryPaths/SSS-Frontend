@@ -1,0 +1,47 @@
+.container {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.sectionHeading {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    font-size: 56px;
+}
+
+.Heading {
+    margin-top: 10px;
+}
+
+.sellerHeader {
+    background-color: #303030;
+    color: white;
+    height: auto;
+    /* min-height: 400px; */
+    margin: 1%;
+    padding: 1%;
+}
+
+.headerDetails {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-control {
+    width: 45em;
+    margin-bottom: 15px;
+}
+
+.file-upload {
+    margin-bottom: 15px;
+}
+
+#description {
+    height: 80px;
+}
+
+.productImage {
+    width: 300px;
+    margin-right: 100px;
+}
