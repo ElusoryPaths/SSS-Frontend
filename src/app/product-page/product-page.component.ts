@@ -13,7 +13,6 @@ import { ProfileService } from '../profile.service';
 export class ProductPageComponent implements OnInit, OnDestroy {
 
   querySub: Subscription[] = [];
-
   id: string = "";
   product!: Product;
   wished: boolean = false;
@@ -53,9 +52,19 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     this.querySub.push(
       this.productServ.addToView(this.id).subscribe()
     )
+    
+    let mail = localStorage.getItem('email') || ""
+    this.profServ.refreshUser(mail).subscribe({
+      next: (success) => { 
+        for (let item of success.wishlist) {
+          this.wished = true
+        }
+       },
+      error: (error) => { console.error(error) }
+    })
   }
 
-  onClick() {
+  addWish() {
     let mail = localStorage.getItem('email') || ""
     let found = false;
     this.profServ.refreshUser(mail).subscribe({
@@ -79,7 +88,33 @@ export class ProductPageComponent implements OnInit, OnDestroy {
           let mail = localStorage.getItem('email')
           if (mail) this.querySub.push(
             this.profServ.refreshUser(mail).subscribe({
-              next: (success) => { this.profServ.setUser(success) },
+              next: (success) => { 
+                this.profServ.setUser(success) 
+                this.wished = true
+              },
+              error: (error) => { console.error(error) }
+            })
+          )
+        },
+        error: (error) => { console.error(error) }
+      }))
+  }
+
+  removeWish() {
+    let mail = localStorage.getItem('email') || ""
+    let id = this.product.id
+    
+    this.querySub.push(
+      this.productServ.deleteProductFromWish(mail, id).subscribe({
+        next: (success) => {
+          console.log(success)
+          let mail = localStorage.getItem('email')
+          if (mail) this.querySub.push(
+            this.profServ.refreshUser(mail).subscribe({
+              next: (success) => { 
+                this.profServ.setUser(success)
+                this.wished = false
+              },
               error: (error) => { console.error(error) }
             })
           )
