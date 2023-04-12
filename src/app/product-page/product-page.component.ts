@@ -5,8 +5,6 @@ import Product from '../Product';
 import { ProductService } from '../product.service';
 import { ProfileService } from '../profile.service';
 
-const localStorage = require('local-storage-json');
-
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
