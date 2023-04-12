@@ -29,6 +29,8 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { SellerDashComponent } from './seller-dash/seller-dash.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
+import { FormErrorComponent } from './form-error/form-error.component';
+import { FormFieldComponent } from './form-field/form-field.component';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
     SellerDashComponent,
     AddProductComponent,
     CheckoutPageComponent,
+    FormErrorComponent,
+    FormFieldComponent,
     
 
   ],

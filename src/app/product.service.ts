@@ -34,16 +34,16 @@ export class ProductService {
     return this.http.post(`${this.apiUrl}/user/add/wishlist`, obj)
   } 
 
-  public deleteProductFromWish(obj: any): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/user/delete/wishlist`, obj)
+  public deleteProductFromWish(mail: any, id: any): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/user/delete/wishlist/${mail}/${id}`)
   } 
 
   public addToView(id: string, numViews = 1) {
-    return this.http.put(`${this.apiUrl}/product/${id}/addview/`, numViews)
+    return this.http.put(`${this.apiUrl}/product/${id}/addview/`, {})
   }
 
   public addToViewCart(id: string, numViews = 1) {
-    return this.http.put(`${this.apiUrl}/product/${id}/addviewcart/`, numViews)
+    return this.http.put(`${this.apiUrl}/product/${id}/addviewcart/`, {})
   }
 
   public addToCart(product: Product): void {

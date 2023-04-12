@@ -5,8 +5,6 @@ import Product from '../Product';
 import { ProductService } from '../product.service';
 import { ProfileService } from '../profile.service';
 
-const localStorage = require('local-storage-json');
-
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -15,10 +13,10 @@ const localStorage = require('local-storage-json');
 export class ProductPageComponent implements OnInit, OnDestroy {
 
   querySub: Subscription[] = [];
-
   id: string = "";
   product!: Product;
   wished: boolean = false;
+  success: string = "";
 
   constructor(private route: ActivatedRoute,
     private productServ: ProductService,
@@ -53,11 +51,27 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       )
     }
     this.querySub.push(
-      this.productServ.addToView(this.id).subscribe()
+      this.productServ.addToView(this.id).subscribe({
+        next: (success) => { 
+          console.log(success) 
+          console.log('view added')
+        },
+        error: (error) => { console.error(error) }
+      })
     )
+    
+    let mail = localStorage.getItem('email') || ""
+    this.profServ.refreshUser(mail).subscribe({
+      next: (success) => { 
+        for (let item of success.wishlist) {
+          if (item.id == this.product.id) this.wished = true
+        }
+       },
+      error: (error) => { console.error(error) }
+    })
   }
 
-  onClick() {
+  addWish() {
     let mail = localStorage.getItem('email') || ""
     let found = false;
     this.profServ.refreshUser(mail).subscribe({
@@ -81,7 +95,33 @@ export class ProductPageComponent implements OnInit, OnDestroy {
           let mail = localStorage.getItem('email')
           if (mail) this.querySub.push(
             this.profServ.refreshUser(mail).subscribe({
-              next: (success) => { this.profServ.setUser(success) },
+              next: (success) => { 
+                this.profServ.setUser(success) 
+                this.wished = true
+              },
+              error: (error) => { console.error(error) }
+            })
+          )
+        },
+        error: (error) => { console.error(error) }
+      }))
+  }
+
+  removeWish() {
+    let mail = localStorage.getItem('email') || ""
+    let id = this.product.id
+    
+    this.querySub.push(
+      this.productServ.deleteProductFromWish(mail, id).subscribe({
+        next: (success) => {
+          console.log(success)
+          let mail = localStorage.getItem('email')
+          if (mail) this.querySub.push(
+            this.profServ.refreshUser(mail).subscribe({
+              next: (success) => { 
+                this.profServ.setUser(success)
+                this.wished = false
+              },
               error: (error) => { console.error(error) }
             })
           )
@@ -93,7 +133,17 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   addToCart(product: Product) {
     this.productServ.addToCart(product)
     this.querySub.push(
-      this.productServ.addToViewCart(this.id).subscribe()
+      this.productServ.addToViewCart(this.id).subscribe({
+        next: (success) => { 
+          console.log(success) 
+          console.log('cart view added')
+          this.success = "Successfully Added To Cart!"
+          setTimeout(() => {
+            this.success = ""
+          }, 2000);
+        },
+        error: (error) => { console.error(error) }
+      })
     )
   }
 }

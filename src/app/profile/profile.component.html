@@ -28,7 +28,7 @@
     </div>
 
     <h1 class="sectionHeading">Wishlist</h1>
-    <div class="profileBody" >
+    <div class="wishlist">
         <h4 class="noLikes" *ngIf="user.wishlist.length == 0"><i>You Have Not Wishlisted Any Products Yet...</i></h4>
         <div class="wishItem" *ngFor="let item of user.wishlist">
             <p>{{item.title}}: ${{item.price}} <button class="btn btn-warning" (click)="onDelete(item.id)">Delete</button></p> 
