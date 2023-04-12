@@ -63,3 +63,12 @@
     margin: auto auto;
     color: rgb(184, 184, 184);
 }
+
+.wishlist {
+    background-color: #303030;
+    color: white;
+    height: auto;
+    min-height: 400px;
+    margin: 1%;
+    padding: 1%;
+}
