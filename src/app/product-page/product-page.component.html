@@ -11,6 +11,9 @@
 
                 <button class="btn btn-warning" style="width:100%" (click)="addToCart(product)">Add to Cart</button>
                 <br>
+                <div class="alert alert-success" *ngIf="success">
+                    {{success}}
+                </div>
                 <button class="btn btn-primary MarginTop" style="width:100%" (click)="addWish()" *ngIf="!wished">Add to WishList</button>
                 <button class="btn btn-danger MarginTop" style="width:100%" (click)="removeWish()" *ngIf="wished">Remove from WishList</button>
             </div>

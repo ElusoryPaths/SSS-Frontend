@@ -16,6 +16,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   id: string = "";
   product!: Product;
   wished: boolean = false;
+  success: string = "";
 
   constructor(private route: ActivatedRoute,
     private productServ: ProductService,
@@ -136,6 +137,10 @@ export class ProductPageComponent implements OnInit, OnDestroy {
         next: (success) => { 
           console.log(success) 
           console.log('cart view added')
+          this.success = "Successfully Added To Cart!"
+          setTimeout(() => {
+            this.success = ""
+          }, 2000);
         },
         error: (error) => { console.error(error) }
       })
