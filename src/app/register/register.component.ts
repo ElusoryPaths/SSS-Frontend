@@ -44,14 +44,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(f: NgForm): void {
-    if (this.validatePass) return;
     this.querySub.push(this.auth.register(this.user).subscribe(
       (success) => {
         this.router.navigate(['/login']);
         console.log(success)
       },
       (err) => {
-        this.warning = err.error.message;
+        this.warning = "Missing required fields!";
+        console.log(err)
       }
     ))
 
