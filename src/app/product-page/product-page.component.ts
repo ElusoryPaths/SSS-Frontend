@@ -63,7 +63,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     this.profServ.refreshUser(mail).subscribe({
       next: (success) => { 
         for (let item of success.wishlist) {
-          this.wished = true
+          if (item.id == this.product.id) this.wished = true
         }
        },
       error: (error) => { console.error(error) }
