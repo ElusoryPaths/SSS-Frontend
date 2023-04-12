@@ -1,0 +1,12 @@
+
+<div class="form-group row">
+    <label for="userName" class="col-sm-2 col-form-label">{{field}}<span class="red">*</span></label>
+
+    <input type="text" class="col-sm-6 form-control" id="{{field}}" name="{{field}}" [(ngModel)]="user.username"
+        #model="ngModel" autofocus [required]="require">
+
+
+    <div class="col-sm-2">
+        <app-form-error [name]="field" [model]="model"></app-form-error>   
+    </div>
+</div>

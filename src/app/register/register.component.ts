@@ -15,7 +15,8 @@ import Address from '../Address';
 export class RegisterComponent implements OnInit, OnDestroy {
   user: User = new User();
   warning: string = "";
-  type: string = "";
+  validatePass: boolean = false;
+  passCheck: string = "";
   querySub: Subscription[] = [];
   
   addressFieldNames = ["Address Line 1", "Address Line 2", "City", "Province", "Postal Code", "Country"];
@@ -30,13 +31,20 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.user.accountType = "buyer"
   }
 
   onTypeChange(event: any) : void {
-    this.type = event.target.value
+    this.user.accountType
+  }
+  
+  confirmPassword() {
+    if (this.user.password == this.passCheck) this.validatePass = true;
+    else this.validatePass = false;
   }
 
   onSubmit(f: NgForm): void {
+    if (this.validatePass) return;
     this.querySub.push(this.auth.register(this.user).subscribe(
       (success) => {
         this.router.navigate(['/login']);

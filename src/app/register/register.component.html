@@ -12,13 +12,12 @@
 
                 <fieldset class="form-group">
                     <div class="row">
-                        <legend class="col-sm-2 col-form-label">Account Type</legend>
+                        <legend class="col-sm-2 col-form-label">Account Type<span class="red">*</span></legend>
                         <div class="col-sm-4">
-
 
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="userType" id="buyer" value="buyer"
-                                    checked [(ngModel)]="user.accountType" (change)="onTypeChange($event)">
+                                    [(ngModel)]="user.accountType" (change)="onTypeChange($event)">
                                 <label class="form-check-label" for="userType">
                                     Buyer
                                 </label>
@@ -39,65 +38,111 @@
                 <hr>
                 <div class="form-group row">
 
-                    <label for="userName" class="col-sm-2 col-form-label">First Name</label>
+                    <label for="userName" class="col-sm-2 col-form-label">First Name<span class="red">*</span></label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control" id="fName" name="fName" [(ngModel)]="user.firstName"
-                            autofocus>
+                            #fname="ngModel" autofocus required>
                     </div>
 
-                    <label for="userName" class="col-sm-2 col-form-label">Last Name</label>
+                    <label for="userName" class="col-sm-2 col-form-label">Last Name<span class="red">*</span></label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control" id="lName" name="lName" [(ngModel)]="user.lastName"
-                            autofocus>
+                            #lname="ngModel" autofocus required="">
                     </div>
+
+                    <div class="col-sm-2">
+                        <div *ngIf="fname.invalid || lname.invalid" class="red">
+                            <div *ngIf="fname.errors?.['required'] || lname.errors?.['required']">
+                                Name is required.
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="userName">Username</label>
+                    <label class="col-sm-2 col-form-label" for="userName">Username<span class="red">*</span></label>
                     <div class="col-sm-6">
 
                         <input type="text" class="form-control" id="userName" name="userName"
-                            [(ngModel)]="user.username" autofocus>
+                            [(ngModel)]="user.username" #username="ngModel" autofocus required="">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <app-form-error name="Username" [model]="username"></app-form-error>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="email">Email</label>
+                    <label class="col-sm-2 col-form-label" for="email">Email<span class="red">*</span></label>
                     <div class="col-sm-6">
                         <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email"
-                            autofocus>
+                            #email="ngModel" autofocus required>
+                    </div>
+
+
+                    <div class="col-sm-2">
+                        <app-form-error name="Email" [model]="email"></app-form-error>
                     </div>
 
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="password">Password</label>
+                    <label class="col-sm-2 col-form-label" for="password">Password<span class="red">*</span></label>
                     <div class="col-sm-6">
 
                         <input type="password" class="form-control" id="password" [(ngModel)]="user.password"
-                            name="password" required="">
+                            name="password" required #password="ngModel">
+                    </div>
+
+                    <div class="col-sm-2 red" *ngIf="password.invalid">
+                        <app-form-error name="Password" [model]="password"></app-form-error>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="phoneNumber">Phone Number</label>
+                    <label class="col-sm-2 col-form-label" for="password">Confirm Password<span
+                            class="red">*</span></label>
                     <div class="col-sm-6">
 
-                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
-                            [(ngModel)]="user.phoneNumber" autofocus>
+                        <input type="password" class="form-control" id="password" [(ngModel)]="passCheck"
+                            name="password" #passwordConfirm="ngModel">
+
+                    </div>
+                    <div class="col-sm-2 red" *ngIf="user.password != passCheck">
+                        <p>Password does not match</p>
                     </div>
                 </div>
 
-                <section class="address form" *ngIf="type == 'buyer'">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="phoneNumber">Phone Number<span
+                            class="red">*</span></label>
+                    <div class="col-sm-6">
+
+                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                            [(ngModel)]="user.phoneNumber" autofocus #phoneNumber="ngModel" required>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <app-form-error name="Number" [model]="phoneNumber"></app-form-error>
+                    </div>
+                </div>
+
+                <section class="address form" *ngIf="user.accountType == 'buyer'">
                     <hr>
                     <h2>Address</h2>
                     <hr>
                     <div class="form-group">
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="addressline1">Address line 1</label>
+                            <label class="col-sm-2 col-form-label" for="addressline1">Address line 1<span
+                                    class="red">*</span></label>
                             <div class="col-sm-6">
 
                                 <input type="text" class="form-control" id="addressline1"
-                                    [(ngModel)]="user.address.addressLine1" name="addressline1">
+                                    [(ngModel)]="user.address.addressLine1" name="addressline1" #address="ngModel" required>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <app-form-error name="Address" [model]="address"></app-form-error>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -109,35 +154,56 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="city">City</label>
+                            <label class="col-sm-2 col-form-label" for="city">City<span class="red">*</span></label>
                             <div class="col-sm-6">
 
                                 <input type="text" class="form-control" id="city" [(ngModel)]="user.address.city"
-                                    name="city">
+                                    name="city" #city="ngModel" required>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <app-form-error name="City" [model]="city"></app-form-error>
                             </div>
                         </div>
+
+                        
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="province">Province</label>
+                            <label class="col-sm-2 col-form-label" for="province">Province<span
+                                    class="red">*</span></label>
                             <div class="col-sm-6">
 
                                 <input type="text" class="form-control" id="province"
-                                    [(ngModel)]="user.address.province" name="province">
+                                    [(ngModel)]="user.address.province" name="province" #province="ngModel" required>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <app-form-error name="Province" [model]="province"></app-form-error>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="postalCode">Postal Code</label>
+                            <label class="col-sm-2 col-form-label" for="postalCode">Postal Code<span
+                                    class="red">*</span></label>
                             <div class="col-sm-6">
 
                                 <input type="text" class="form-control" id="postalCode"
-                                    [(ngModel)]="user.address.postalCode" name="postalCode">
+                                    [(ngModel)]="user.address.postalCode" name="postalCode" #postalCode="ngModel" required>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <app-form-error name="Postal Code" [model]="postalCode"></app-form-error>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="country">Country</label>
+                            <label class="col-sm-2 col-form-label" for="country">Country<span
+                                    class="red">*</span></label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" id="country" [(ngModel)]="user.address.country"
-                                    name="country">
+                                    name="country" #country="ngModel" required="">
                             </div>
+                            <div class="col-sm-2">
+                                <app-form-error name="country" [model]="country"></app-form-error>
+                            </div>
+                            
                         </div>
                     </div>
                 </section>
