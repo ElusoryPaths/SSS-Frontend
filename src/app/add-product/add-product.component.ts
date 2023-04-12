@@ -24,6 +24,8 @@ export class AddProductComponent implements OnInit, OnDestroy {
       rate: 0,
       count: 0
     },
+    views: 0,
+    addedToCart: 0,
     reviews: []
   };
 

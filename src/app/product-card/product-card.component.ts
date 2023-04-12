@@ -25,7 +25,13 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   addToCart(product: Product) {
     this.productServ.addToCart(product)
     this.querySub.push(
-      this.productServ.addToViewCart(product.id).subscribe()
+      this.productServ.addToViewCart(product.id).subscribe({
+        next: (success) => { 
+          console.log(success) 
+          console.log('view added')
+        },
+        error: (error) => { console.error(error) }
+      })
     )
   }
 }
