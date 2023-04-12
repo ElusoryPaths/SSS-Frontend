@@ -14,4 +14,5 @@ export default interface Product {
     views: number
     addedToCart: number
     reviews: Array<Review>
+    seller: string | undefined
 }
