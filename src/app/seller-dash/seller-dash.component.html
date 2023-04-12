@@ -43,10 +43,13 @@
             <div class="col-md-3">
                 <img [src]="product.image" class="img-fluid" height="150" width="150" />
             </div>
-            <div class="col-md-7">
+            <div class="col-md-4">
                 <h4 class="card-title">{{product.title}}</h4>
                 <p class="price">Total Views: {{product.views}}</p>
                 <p class="price">Total Times Added To Cart: {{product.addedToCart}}</p>
+            </div>
+            <div class="col-md-5">
+                <app-chart [views]="product.views" [cartViews]="product.addedToCart"></app-chart>
             </div>
             <hr class="divider">
         </div>

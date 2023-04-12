@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
 @Component({
   selector: 'app-chart',
@@ -8,6 +8,8 @@ import Chart from 'chart.js/auto';
 export class ChartComponent implements OnInit {
 
   public chart: any;
+  @Input() views: number = 0;
+  @Input() cartViews: number = 0;
 
   constructor() { }
 
@@ -21,19 +23,16 @@ export class ChartComponent implements OnInit {
       type: 'bar', //this denotes tha type of chart
 
       data: {// values on X-Axis
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-								 '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ], 
+        labels: ['Product Analytics'], 
 	       datasets: [
           {
-            label: "Sales",
-            data: ['467','576', '572', '79', '92',
-								 '574', '573', '576'],
+            label: "Product Views",
+            data: [this.views],
             backgroundColor: 'blue'
           },
           {
-            label: "Profit",
-            data: ['542', '542', '536', '327', '17',
-									 '0.00', '538', '541'],
+            label: "# Added to Cart",
+            data: [this.cartViews],
             backgroundColor: 'limegreen'
           }  
         ]
