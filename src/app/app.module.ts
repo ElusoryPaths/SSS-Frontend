@@ -31,6 +31,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { FormErrorComponent } from './form-error/form-error.component';
 import { FormFieldComponent } from './form-field/form-field.component';
+import { ChartComponent } from './chart/chart.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
 
 
@@ -59,6 +60,7 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
     CheckoutPageComponent,
     FormErrorComponent,
     FormFieldComponent,
+    ChartComponent,
     PaymentPageComponent,
     
 

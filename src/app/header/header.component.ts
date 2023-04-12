@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.token = this.auth.readToken();
       }
     }));
+    this.querySub.push(this.router.events.subscribe((event: Event) => { this.accountType = localStorage.getItem('accountType') }))
     this.accountType = localStorage.getItem('accountType')
   }
 
