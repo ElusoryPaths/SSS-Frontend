@@ -1,0 +1,5 @@
+<div class="red" *ngIf="model.invalid">
+    <div *ngIf="model.errors?.['required']">
+        {{name}} is required.
+    </div>
+</div>

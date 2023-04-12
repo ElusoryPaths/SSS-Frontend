@@ -53,7 +53,13 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       )
     }
     this.querySub.push(
-      this.productServ.addToView(this.id).subscribe()
+      this.productServ.addToView(this.id).subscribe({
+        next: (success) => { 
+          console.log(success) 
+          console.log('view added')
+        },
+        error: (error) => { console.error(error) }
+      })
     )
   }
 
@@ -93,7 +99,13 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   addToCart(product: Product) {
     this.productServ.addToCart(product)
     this.querySub.push(
-      this.productServ.addToViewCart(this.id).subscribe()
+      this.productServ.addToViewCart(this.id).subscribe({
+        next: (success) => { 
+          console.log(success) 
+          console.log('cart view added')
+        },
+        error: (error) => { console.error(error) }
+      })
     )
   }
 }
