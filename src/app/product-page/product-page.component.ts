@@ -52,6 +52,9 @@ export class ProductPageComponent implements OnInit, OnDestroy {
         })
       )
     }
+    this.querySub.push(
+      this.productServ.addToView(this.id).subscribe()
+    )
   }
 
   onClick() {
@@ -89,5 +92,8 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 
   addToCart(product: Product) {
     this.productServ.addToCart(product)
+    this.querySub.push(
+      this.productServ.addToViewCart(this.id).subscribe()
+    )
   }
 }
