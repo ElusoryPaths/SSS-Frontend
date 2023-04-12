@@ -13,11 +13,42 @@
 
     <h1 class="sectionHeading">Added Products</h1>
     <div class="sellerHeader">
-        <h2>List of products...</h2>
+        <div class="shoppingPrice" *ngIf="sellerProducts.length === 0">
+            <h4>You Do Not Currently Have Product Added...</h4>
+        </div>
+        <div class="headerDetails" *ngFor="let product of sellerProducts; let i = index">
+            <div class="col-md-3">
+                <a routerLink="/product/{{product.id}}" routerLinkActive="active" class="nav-link">
+                    <img [src]="product.image" class="img-fluid" height="150" width="150" />
+                </a>
+            </div>
+            <div class="col-md-8">
+                <h4 class="card-title">{{product.title}}</h4>
+                <p><b>Rating:</b> {{product.rating.rate}}</p>
+                <p class="price">${{product.price}}</p>
+            </div>
+            <button class="btn btn-danger" (click)="removeProduct(product.id)">
+                Remove
+            </button>
+            <hr class="divider">
+        </div>
     </div>
 
     <h1 class="sectionHeading">Analytics</h1>
     <div class="sellerHeader">
-        <h2>Charts & general analytics per product the seller has added...</h2>
+        <div class="shoppingPrice" *ngIf="sellerProducts.length === 0">
+            <h4>You Do Not Currently Have Product Analytics...</h4>
+        </div>
+        <div class="row" *ngFor="let product of sellerProducts; let i = index">
+            <div class="col-md-3">
+                <img [src]="product.image" class="img-fluid" height="150" width="150" />
+            </div>
+            <div class="col-md-7">
+                <h4 class="card-title">{{product.title}}</h4>
+                <p class="price">Total Views: {{product.views}}</p>
+                <p class="price">Total Times Added To Cart: {{product.addedToCart}}</p>
+            </div>
+            <hr class="divider">
+        </div>
     </div>
 </div>
