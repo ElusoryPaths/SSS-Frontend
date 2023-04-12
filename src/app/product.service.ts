@@ -39,11 +39,11 @@ export class ProductService {
   } 
 
   public addToView(id: string, numViews = 1) {
-    return this.http.put(`${this.apiUrl}/product/${id}/addview/`, numViews)
+    return this.http.put(`${this.apiUrl}/product/${id}/addview/`, {})
   }
 
   public addToViewCart(id: string, numViews = 1) {
-    return this.http.put(`${this.apiUrl}/product/${id}/addviewcart/`, numViews)
+    return this.http.put(`${this.apiUrl}/product/${id}/addviewcart/`, {})
   }
 
   public addToCart(product: Product): void {
