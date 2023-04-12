@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Product from '../Product';
 import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 class cartItem {
   product!: Product
@@ -20,7 +21,7 @@ export class CheckoutPageComponent implements OnInit {
   tax = 0;
   total = 0;
 
-  constructor(private productServ: ProductService) { }
+  constructor(private productServ: ProductService, private router : Router) { }
 
   ngOnInit(): void {
     this.products = this.productServ.getCart();
@@ -54,6 +55,11 @@ export class CheckoutPageComponent implements OnInit {
     }
     this.tax = Math.round((this.price * 0.13) * 100) / 100
     this.total = Math.round((this.price + this.tax) * 100) / 100
+  }
+
+  OnPayBtn()
+  {
+    this.router.navigate(['/pay'], {queryParams: {total : JSON.stringify(this.total)}});
   }
 
 }

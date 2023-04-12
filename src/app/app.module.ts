@@ -31,6 +31,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { FormErrorComponent } from './form-error/form-error.component';
 import { FormFieldComponent } from './form-field/form-field.component';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { FormFieldComponent } from './form-field/form-field.component';
     CheckoutPageComponent,
     FormErrorComponent,
     FormFieldComponent,
+    PaymentPageComponent,
     
 
   ],

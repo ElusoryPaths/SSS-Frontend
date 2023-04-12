@@ -89,4 +89,6 @@ export class ProductService {
     cart.splice(index, 1);
     this.updateCart(cart);
   }
+
+  
 }
