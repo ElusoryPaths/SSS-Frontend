@@ -33,11 +33,9 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 p-4">
             <div class="shoppingPrice" *ngIf="products.length > 0">
-                <p>Product Price: ${{price}} </p>
-                <p>Taxes: ${{tax}}</p>
-                <p>Total amount: ${{total}}</p>
+                <h4 class="mb-4">Product Price: ${{price}} </h4>
                 <button (click)="OnPayBtn()" class="btn btn-warning me-2">Pay Now</button>
             </div>
         </div>

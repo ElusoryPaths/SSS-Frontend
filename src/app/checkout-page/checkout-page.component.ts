@@ -18,8 +18,7 @@ export class CheckoutPageComponent implements OnInit {
  
   products: Array<cartItem> = []
   price = 0;
-  tax = 0;
-  total = 0;
+
 
   constructor(private productServ: ProductService, private router : Router) { }
 
@@ -53,13 +52,11 @@ export class CheckoutPageComponent implements OnInit {
     for (let item of this.products) {
       this.price += Math.round((item.product.price * item.count) * 100) / 100
     }
-    this.tax = Math.round((this.price * 0.13) * 100) / 100
-    this.total = Math.round((this.price + this.tax) * 100) / 100
   }
 
   OnPayBtn()
   {
-    this.router.navigate(['/pay'], {queryParams: {total : JSON.stringify(this.total)}});
+    this.router.navigate(['/pay'], {queryParams: {total : JSON.stringify(this.price)}});
   }
 
 }
