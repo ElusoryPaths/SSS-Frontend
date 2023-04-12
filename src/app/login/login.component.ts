@@ -26,17 +26,30 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(f: NgForm): void {
-    this.querySub.push(this.auth.login(this.user).subscribe(
-      (success) => {
-        this.auth.setToken(success.token);
-        this.profile.setUser(success.user)
-        this.router.navigate(['/']);
-        console.log(success)
-      },
-      (err) => {
-        this.warning = err.error.message;
-      }
-    ))
+    if (!this.user.email) {
+      this.warning = "Please enter an email";
+      console.log(this.warning)
 
+    }
+    else if (!this.user.password) {
+      this.warning = "Please enter an password";
+    }
+
+    else {
+      this.querySub.push(this.auth.login(this.user).subscribe(
+        (success) => {
+          this.auth.setToken(success.token);
+          this.profile.setUser(success.user)
+          this.router.navigate(['/']);
+          console.log(success)
+        },
+        (err) => {
+          console.log(err)
+          this.warning = "The credentials you entered are invalid";
+        }
+      ))
+
+    }
   }
+
 }

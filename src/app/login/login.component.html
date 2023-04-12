@@ -12,16 +12,16 @@
                 <div class="form-group">
                     <label class="control-label" for="email">Email:</label>
                     <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email"
-                        autofocus>
+                        autofocus required #email="ngModel">
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="password">Password:</label>
                     <input type="password" class="form-control" id="password" [(ngModel)]="user.password"
-                        name="password">
+                        name="password" required #password="ngModel">
                 </div>
 
                 <div class="alert alert-danger" *ngIf="warning">
-                    {{warning}}
+                    <div>{{warning}}</div>
                 </div>
 
 
