@@ -54,9 +54,19 @@ export class CheckoutPageComponent implements OnInit {
     }
   }
 
-  OnPayBtn()
-  {
-    this.router.navigate(['/pay'], {queryParams: {total : JSON.stringify(this.price)}});
+
+  OnPayBtn() {
+    const queryParams = {
+      price :  this.price
+    };
+    const queryParamsString = JSON.stringify(queryParams);
+    const encodedQueryParamsString = encodeURIComponent(queryParamsString);
+  
+    this.router.navigate(['/pay'], { queryParams: { finalPrice: encodedQueryParamsString } });
+  }
+
+  OnShopMoreBtn(){
+    this.router.navigate(['/products']);
   }
 
 }

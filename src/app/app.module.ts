@@ -33,6 +33,7 @@ import { FormErrorComponent } from './form-error/form-error.component';
 import { FormFieldComponent } from './form-field/form-field.component';
 import { ChartComponent } from './chart/chart.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
+import { PaymentConfirmationComponent } from './payment-confirmation/payment-confirmation.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
     FormFieldComponent,
     ChartComponent,
     PaymentPageComponent,
+    PaymentConfirmationComponent,
     
 
   ],

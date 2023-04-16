@@ -34,9 +34,9 @@
         </div>
 
         <div class="col-md-4 p-4">
-            <div class="shoppingPrice" *ngIf="products.length > 0">
-                <h4 class="mb-4">Product Price: ${{price}} </h4>
-                <button (click)="OnPayBtn()" class="btn btn-warning me-2">Pay Now</button>
+            <div class="shoppingPrice d-lg-inline-flex m-5 justify-content-center align-items-center" *ngIf="products.length > 0">
+                <button (click)="OnPayBtn()" class="btn btn-success btn-lg me-4">Pay Online</button>
+                <button (click)="OnShopMoreBtn()" class="btn btn-warning btn-lg ms-4">Shop More</button>
             </div>
         </div>
     </div>

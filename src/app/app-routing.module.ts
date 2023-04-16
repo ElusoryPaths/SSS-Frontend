@@ -13,6 +13,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { SellerDashComponent } from './seller-dash/seller-dash.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
+import { PaymentConfirmationComponent } from './payment-confirmation/payment-confirmation.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: "seller/add", component: AddProductComponent, canActivate: [AuthGuardService] },
   {path: "checkout", component: CheckoutPageComponent, canActivate: [AuthGuardService]},
   {path: "pay", component: PaymentPageComponent, canActivate: [AuthGuardService]},
+  {path: "success", component: PaymentConfirmationComponent, canActivate :[AuthGuardService]},
   { path: "**", component: PageNotFoundComponent }
 ];
 
