@@ -50,7 +50,7 @@ export class PaymentPageComponent implements OnInit {
     const successURL = window.location.origin + "/success";
     const cancelURL = window.location.origin + "/checkout";
     
-    this.http.post('http://localhost:3000/stripe-checkout',{  finalProducts: this.product, successUrl:successURL, cancelUrl: cancelURL }).subscribe((msg:any)=>{
+    this.http.post('https://sss-backend.vercel.app/stripe-checkout',{  finalProducts: this.product, successUrl:successURL, cancelUrl: cancelURL }).subscribe((msg:any)=>{
       window.location.href = msg.url;
 
     })
