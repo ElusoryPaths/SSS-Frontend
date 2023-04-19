@@ -33,10 +33,10 @@
             </div>
         </div>
 
-        <div class="col-md-4 p-4">
-            <div class="shoppingPrice d-lg-inline-flex m-5 justify-content-center align-items-center" *ngIf="products.length > 0">
-                <button (click)="OnPayBtn()" class="btn btn-success btn-lg me-4">Pay Online</button>
-                <button (click)="OnShopMoreBtn()" class="btn btn-warning btn-lg ms-4">Shop More</button>
+        <div class="col-md-4">
+            <div class="shoppingPrice" *ngIf="products.length > 0">
+                <button (click)="OnPayBtn()" class="btn btn-success btn-lg me-4">Proceed To Checkout</button>
+                <!-- <button (click)="OnShopMoreBtn()" class="btn btn-warning btn-lg ms-4">Shop More</button> -->
             </div>
         </div>
     </div>
