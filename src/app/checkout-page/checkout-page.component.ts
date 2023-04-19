@@ -49,6 +49,7 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   updatePrice() {
+    this.price = 0;
     for (let item of this.products) {
       this.price += Math.round((item.product.price * item.count) * 100) / 100
     }
