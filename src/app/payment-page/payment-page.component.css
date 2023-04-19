@@ -1,3 +1,10 @@
 .card{
-    background-color: #99b3f6;
+    background-color: #303030;
+    color: white;
+}
+
+.paynow {
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 0;
 }
